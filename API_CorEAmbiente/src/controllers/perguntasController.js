@@ -43,4 +43,42 @@ exports.searchPeguntasByTitle = async(req,res)=>{
         console.error(error)
         res.status(500).json({error:'erro ao buscar perguntas por titulo'})
     }    
+};
+
+//Metodo para atualizar pergunta por ID
+exports.uptadePergunta = async (req,res)=>{
+    const{ id } = req.params;
+    try{
+       const{titulo,resposta} = req.body;
+       const[updated] = await Pergunta.update({titulo,resposta},{
+        where : {id},
+       });
+       if(updated){
+        const updatedPergunta = await Pergunta.findByPK(id);
+        res.status(200).json(updatedPergunta)
+       }else{
+        res.status(404).json({error:'Pergunta não encontrada'})
+       }
+    }catch(error){
+        console.error(error);
+        res.status(500).json({error:'Erro ao atualizar pergunta'});
+    }
+};
+
+//Metodo para excluir banner por ID
+exports.deletePergunta = async (req,res) =>{
+    const {id} = req.params;
+    try{
+        const deleted = await Pergunta.destroy({
+            where: {id},
+        });
+        if (deleted){
+            res.status(200).json({message:'Pergunta excluida com sucesso'});
+        }else{
+            res.status(404).json({error:'Pergunta não encontrada'});
+        }
+    }catch(error){
+            console.error(error);
+            res.status(500).json({error:'Erro ao excluir a pergunta'})
+    }
 }
