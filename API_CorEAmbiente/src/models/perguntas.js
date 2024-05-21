@@ -4,9 +4,11 @@ const sequelize = require('../conn/connection'); // Importe sua configuração d
 const Pergunta = sequelize.define('Pergunta',{
     titulo:{
         type: DataTypes.STRING(100),
+        allowNull : false,
     },
     resposta:{
         type : DataTypes.STRING(300),
+        allowNull: false,
     },
 })
 

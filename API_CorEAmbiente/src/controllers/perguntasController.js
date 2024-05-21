@@ -1,5 +1,4 @@
 const Pergunta = require('../models/perguntas');
-const Banner = require('../models/perguntas');
 const { Op } = require('sequelize');
 
 
