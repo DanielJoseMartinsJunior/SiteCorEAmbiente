@@ -1,17 +1,21 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../conn/connection'); // Importe sua configuração do Sequelize
+// models/Noticia.js
 
-const Publicacao = sequelize.define('Publicacao',{
-    titulo:{
-        type: DataTypes.STRING(250),
-        allownull : false,
-    },
-    conteudo:{
-        type: DataTypes.STRING(400),
-        allownull: false,
-    },
-    imagem:{
-        type: DataTypes.STRING(255),
-        allownull: false
-    }
+const { DataTypes } = require('sequelize');
+const sequelize = require('../conn/connection');
+
+const Publicacao = sequelize.define('Publicacao', {
+  titulo: {
+    type: DataTypes.STRING(100),
+    allowNull: false,
+  },
+  imagem_principal: {
+    type: DataTypes.STRING(255),
+    allowNull: false,
+  },
+  imagens_internas: {
+    type: DataTypes.TEXT, // Armazenar como JSON
+    allowNull: true,
+  },
 });
+
+module.exports = Publicacao;

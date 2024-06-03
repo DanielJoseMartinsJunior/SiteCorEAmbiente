@@ -1,54 +1,70 @@
-// loginController.js
+// noticiaController.js
+
 const api = require('../config/api');
 
-
-// Método para mostrar a página de login
-exports.getLogin = async (req, res) => {
+// Método para buscar todos os noticias
+exports.getAllProdutos = async (req, res) => {
   try {
-    // Renderiza a página 
-    res.render('login/',{layout : false});
+    // Faz uma solicitação GET para a API que fornece os noticias
+    const response = await api.get(`/produtos`);
+
+    // Obtenha os dados JSON da resposta
+    const produtos = response.data;
+
+    // Renderiza a página noticia/index.handlebars e passa os noticias como contexto
+    res.render('produto/', { produtos });
   } catch (error) {
     console.error(error);
+    res.status(500).json({ error: 'Erro ao buscar produtos' });
+  }
+};
+
+// Método para buscar noticia para edição
+exports.editProduto = async (req, res) => {
+  try {
+    const { id } = req.params;
+    // Faz uma solicitação GET para a API que fornece o noticia
+    const response = await api.get(`/produtos/${id}`);
+
+    // Obtenha os dados JSON da resposta
+    const produto = response.data;
+
+    // Renderiza a página noticia/edit.handlebars e passa o noticia como contexto
+    res.render('produto/edit', { produto });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao buscar produto' });
+  }
+};
+
+// Método para apresentar formulário de criação do noticia
+exports.createProduto = async (req, res) => {
+  try {
+    // Renderiza a página noticia/create.handlebars
+    res.render('produto/create');
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao mostrar formulário de criação de produtos' });
   }
 };
 
 
-
-// Função para autenticar o usuário
-exports.autenticate = async (req, res) => {
+// Método para buscar todos os noticias
+exports.searchProdutosByTitle = async (req, res) => {
   try {
-    // Obtém os dados do usuário a partir do corpo da requisição
-    const usuario = req.body;
-    //console.log(usuario);
+    // Obter o valor inserido no campo de pesquisa
+    const valorPesquisa = req.body.valorPesquisa
 
-    // Faz uma solicitação POST para fazer o login do usuário usando a API 
-    api.post(`/login/`, usuario)
-      .then(response => {
-        //console.log(response.data);
+    // Fazer uma solicitação GET para buscar banners com base no título
+    const response = await api.get(`/produtos/search?titulo=${valorPesquisa}`)
 
-        // Armazena informações importantes da sessão do usuário no objeto 'req.session'
-        req.session.token = response.data.token; // Armazena o token de autenticação
-        req.session.userId = response.data.userId; // Armazena o ID do usuário
-        req.session.userMail = response.data.userMail; // Armazena o email do usuário
+    // Obtenha os dados JSON da resposta
+    const produtos = response.data;
 
-        // Salva a sessão antes de responder à requisição
-        req.session.save(() => {
-          // Retorna uma resposta bem-sucedida com informações de autenticação
-          res.status(200).json({
-            message: "Você está autenticado!",
-            token: req.session.token,
-            userMail: response.data.userId,
-            userId: response.data.userMail,
-          });
-        });
-      })
-      .catch(error => {
-        // Lida com erros de autenticação da API externa
-        const mensagem = error.response.data.error;
-        res.status(401).json({ error: mensagem });
-      });
+    // Renderiza a página noticia/index.handlebars e passa os noticias como contexto
+    res.render('produto/', { produtos });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: 'Erro interno do servidor' });
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao buscar produtos' });
   }
 };

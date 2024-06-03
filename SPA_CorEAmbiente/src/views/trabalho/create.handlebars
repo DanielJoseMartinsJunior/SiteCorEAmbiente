@@ -1,0 +1,30 @@
+{{!-- create.handlebars --}}
+
+{{!-- Seção de conteúdo da página --}}
+<div class="container mt-4 w-80">
+    <h1 class="mb-4">Criar Trabalho</h1>
+    <form id="createTrabalhoForm" enctype="multipart/form-data" method="post">
+        <div class="form-group mb-3">
+            <label for="createTitulo">Título</label>
+            <input type="text" class="form-control" id="createTitulo" name="titulo" value="{{trabalho.titulo}}" required>
+        </div>
+         <div class="form-group mb-3">
+            <label for="createDescricao">Descrição</label>
+            <input type="text" class="form-control" id="createDescricao" name="descricao" value="{{trabalho.descricao}}" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="createImagemPrincipal">Imagem Principal</label>
+            <input type="file" class="form-control-file" id="createImagemPrincipal" name="imagem_principal" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="createImagensInternas">Imagens Internas</label>
+            <input type="file" class="form-control-file" id="createImagensInternas" name="imagens_internas" multiple>
+        </div>
+        <!-- Campo oculto para armazenar o ID da publicacao -->
+        <input type="hidden" id="createTrabalhoId" name="id" value="{{trabalho.id}}">
+        <a href="../trabalhos/" class="btn btn-secondary" id="cancelCreateTrabalho"><i class="bi bi-x-circle"></i> Cancelar</a>
+        <button type="button" class="btn btn-primary" id="saveCreateTrabalho" onclick="CreateTrabalhoClick(event)"><i class="bi bi-check-circle"></i> Salvar</button>
+    </form>
+</div>
+<!-- Scripts do formulário publicacao -->
+<script src="../js/trabalhoScripts.js"></script>

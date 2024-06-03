@@ -1,11 +1,11 @@
-{{!-- publicacao.handlebars --}}
+{{!-- noticia.handlebars --}}
 
 {{!-- Seção de conteúdo da página --}}
 <div class="container mt-4">
-    <h1 class="mb-4">Cadastro de Trabalhos</h1>
+    <h1 class="mb-4">Cadastro de Produtos</h1>
     <div class="row mb-3">
         <div class="col-md-10 mb-3">
-            <form action="../trabalhosSearch/" method="post" class="d-flex" id="searchForm">
+            <form action="../produtosSearch/" method="post" class="d-flex" id="searchForm">
                 <!-- Define a ação e o método POST e utiliza display flex para alinhar o botão e a input -->
                 <div class="input-group">
                     <input type="text" class="form-control" name="valorPesquisa" id="valorPesquisa"
@@ -19,23 +19,20 @@
         </div>
         <div class="col-md-2 d-flex justify-content-end mb-3">
             <!-- Botão Novo -->
-            <a href="../trabalhosCreate/" class="btn btn-success"><i class="bi bi-plus-circle"></i> Novo</a>
+            <a href="../produtosCreate/" class="btn btn-success"><i class="bi bi-plus-circle"></i> Novo</a>
         </div>
     </div>
 
     <div class="row" id="card-list">
-        {{#each trabalhos}}
+        {{#each produtos}}
         <div class="col-md-3 mb-4" id="card{{id}}">
             <div class="card h-100">
-                <img src="http://localhost:3000/img/trabalhos/{{imagem_principal}}" class="card-img-top" alt="{{titulo}}">
+                <img src="http://localhost:3000/img/produtos/{{imagem_principal}}" class="card-img-top" alt="{{titulo}}">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{titulo}}</h5>
                     <div class="d-flex mt-auto justify-content-between">
-                        <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">{{descricao}}</h5>
-                    <div class="d-flex mt-auto justify-content-between">
                         <!-- Link de Edição -->
-                        <a class="btn btn-secondary" href="../trabalhos/{{id}}"><i class="bi bi-pencil"></i> Editar</a>
+                        <a class="btn btn-secondary" href="../produtos/{{id}}"><i class="bi bi-pencil"></i> Editar</a>
 
                         <!-- Link de Exclusão - Botão para acionar o modal -->
                         <button class="btn btn-danger" data-bs-toggle="modal"
@@ -56,13 +53,13 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Tem certeza que deseja excluir a trabalho: <strong>{{titulo}}</strong>?
+                        Tem certeza que deseja excluir o produto: <strong>{{titulo}}</strong>?
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cancelar</button>
-                        <!-- Botão de Confirmação - Chama a função publica JavaScript para excluir -->
+                        <!-- Botão de Confirmação - Chama a função JavaScript para excluir -->
                         <button type="button" class="btn btn-danger"
-                            onclick="confirmDeleteTrabalho({{id}})"><i class="bi bi-check-circle"></i> Confirmar</button>
+                            onclick="confirmDeleteProduto({{id}})"><i class="bi bi-check-circle"></i> Confirmar</button>
                     </div>
                 </div>
             </div>
@@ -71,5 +68,5 @@
     </div>
 
 </div>
-<!-- Scripts do formulário publicacao -->
-<script src="../js/trabalhoScripts.js"></script>
+<!-- Scripts do formulário noticia -->
+<script src="../js/produtoScripts.js"></script> 

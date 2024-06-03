@@ -1,34 +1,46 @@
-// routes/bannerRoutes.js
+// routes/noticiaRoutes.js
 
 const express = require('express');
 const router = express.Router();
-const trabalhosController = require('../controllers/NossosTrabalhosCotroler');
-const checkToken = require('../helpers/check-token')
-
-const fs = require('fs');
-const path = require('path');
+const trabalhoController = require('../controllers/trabalhoController');
 const multer = require('multer');
+const path = require('path');
+const crypto = require('crypto');
+const checkToken = require('../helpers/check-token')
 
 // Configuração do multer para lidar com uploads de arquivos
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, '../../public/img/banners')); // Define a pasta de destino
+    cb(null, path.join(__dirname, '../../public/img/trabalhos'));
   },
   filename: (req, file, cb) => {
-    const fileName = Date.now() + path.extname(file.originalname); // Gera um nome de arquivo único
-    cb(null, fileName);
+    //cb(null, Date.now() + path.extname(file.originalname));
+    cb(null, crypto.randomBytes(24).toString('hex') + path.extname(file.originalname));
   },
 });
 
 const upload = multer({ storage });
 
-// Rotas para trabalhos
-router.post('/NossosTrabalhos',checkToken,upload.single('imagem'), trabalhosController.createTrabalhos);
-router.get('/NossosTrabslhos', trabalhosController.getAllTrabalhos);
-router.get('/NossosTrabalhos/search', trabalhosController.searchTrabalhosByTitle);
-router.get('/NossosTrabalhos/:id', trabalhosController.getTrabalhoById);
-router.put('/Nossostrabalhos/:id',checkToken, upload.single('imagem'), trabalhosController.updateTrabalho);
-router.delete('/NossosTrabalhos/:id',checkToken, trabalhosController.deleteTrabalho);
+// Rota para criar uma nova notícia com upload de arquivo publi e verificação de token
+router.post('/trabalhos',checkToken, upload.fields([
+  { name: 'imagem_principal', maxCount: 1 },
+  { name: 'imagens_internas', maxCount: 10 },
+]), trabalhoController.createTrabalho);
 
+//Rota para listas todas as noticias
+router.get('/trabalhos', trabalhoController.getAllTrabalhos);
+//Rota para listas as noticias pelo título
+router.get('/trabalhos/search', trabalhoController.searchTrabalhosByTitle);
+//Rota para listas todas a noticia pelo id
+router.get('/trabalhos/:id', trabalhoController.getTrabalhoById);
+
+// Rota para atualizar uma notícia com upload de arquivo e verificação de token
+router.put('/trabalhos/:id',checkToken, upload.fields([
+  { name: 'imagem_principal', maxCount: 1 },
+  { name: 'imagens_internas', maxCount: 10 },
+]), trabalhoController.updateTrabalho);
+
+// Rota para excluir uma notícia por ID e verificação de token
+router.delete('/trabalhos/:id',checkToken, trabalhoController.deleteTrabalho);
 
 module.exports = router;

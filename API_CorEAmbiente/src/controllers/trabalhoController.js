@@ -1,91 +1,104 @@
-const trabalho = require('../models/NossosTrabalhos');
+// controllers/noticiaController.js
+
+const Trabalho = require('../models/Trabalho');
 const { Op } = require('sequelize');
 
-exports.createTrabalhos = async(req,res) =>{
-    try{
-        const{titulo, descricao} = req.body;
-        const imagem = req.file.filename;
-        const trabalho = await Trabalho.create({titulo,descricao,imagem});
-        res.status(201).json(trabalho)
-    }catch(error){
-        console.error(error)
-        res.status(500).json({error:'erro ao cadastrar trabalho'});
+
+// Método para criar uma nova notícia
+exports.createTrabalho= async (req, res) => {
+  try {
+    const { titulo, descricao } = req.body;
+    const imagem_principal = req.files['imagem_principal'][0].filename;
+    let imagens_internas = '';
+    
+    if (req.files['imagens_internas']){
+      imagens_internas = req.files['imagens_internas'].map((file) => file.filename);
     }
+
+    const trabalho = await Trabalho.create({ titulo, descricao, imagem_principal, imagens_internas: JSON.stringify(imagens_internas) });
+    res.status(201).json(trabalho);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao criar a trabalho' });
+  }
 };
 
-exports.getAllTrabalhos = async(req,res) =>{
-    try{
-        const trabalho = await Trabalho.findAll({
-            order:[['ordem','ASC']],
-        });
-    res.status(200).json(trabalho);
-    }catch(error){
-        console.error(error);
-        res.status(500).json({error:'Erro ao buscar os trabalhos'});
-    }
+// Método para listar todas as notícias
+exports.getAllTrabalhos = async (req, res) => {
+  try {
+    const trabalhos = await Trabalho.findAll();
+    res.status(200).json(trabalhos);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao buscar as trabalhos' });
+  }
 };
 
-// Método para buscar um Trabalho por ID
+// Método para buscar uma notícia por ID
 exports.getTrabalhoById = async (req, res) => {
-    const { id } = req.params;
-    try {
-      const trabalho = await Trabalho.findByPk(id);
-      if (!trabalho) {
-        res.status(404).json({ error: 'Trabalho não encontrado' });
-        return;
-      }
-      res.status(200).json(trabalho);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Erro ao buscar o trabalho' });
+  const { id } = req.params;
+  try {
+    const trabalho = await Trabalho.findByPk(id);
+    if (!trabalho) {
+      res.status(404).json({ error: 'Trabalho não encontrada' });
+      return;
     }
-  };
+    res.status(200).json(trabalho);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao buscar a trabalho' });
+  }
+};
 
-  // Método para buscar trabalhos por título
+// Método para buscar noticias por título
 exports.searchTrabalhosByTitle = async (req, res) => {
-    try {
-      const { titulo } = req.query; // Recupera o título da consulta da query
-  
-      // Realiza a busca no banco de dados com base no título
-      const trabalho = await Trabalho.findAll({
-        where: {
-          titulo: {
-            [Op.like]: `%${titulo}%`, // Pesquisa por títulos que contenham o termo
-          },
+  try {
+    const { titulo } = req.query; // Recupera o título da consulta da query
+
+    // Realiza a busca no banco de dados com base no título
+    const trabalhos = await Trabalho.findAll({
+      where: {
+        titulo: {
+          [Op.like]: `%${titulo}%`, // Pesquisa por títulos que contenham o termo
         },
-      });
-  
-      res.status(200).json(trabalho);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Erro ao buscar trabalhos por título' })     ;  
-    }
-  };
+      },
+    });
 
-  // Método para atualizar um trablho por ID
+    res.status(200).json(trabalhos);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao buscar trarabalho por título' });
+  }
+};
+
+// Método para atualizar uma notícia por ID
 exports.updateTrabalho = async (req, res) => {
-    const { id } = req.params;
-    try {
-      const { titulo, descricao } = req.body;
-      const imagem = req.file.filename; // Obtém o nome do arquivo enviado
-  
-      const [updated] = await trabalho.update({ titulo, descricao, imagem }, {
-        where: { id },
-      });
-      if (updated) {
-        const updatedTrabalho = await Trabalho.findByPk(id);
-        res.status(200).json(updatedTrabalho);
-      } else {
-        res.status(404).json({ error: 'trabalho não encontrado' });
-      }
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Erro ao atualizar o trabalho' });
+  const { id } = req.params;
+  try {
+    const { titulo, descricao } = req.body;
+    const imagem_principal = req.files['imagem_principal'][0].filename;
+    let imagens_internas = '';
+    
+    if (req.files['imagens_internas']){
+      imagens_internas = req.files['imagens_internas'].map((file) => file.filename);
     }
-  };  
 
+    const [updated] = await Trabalho.update({ titulo,descricao, imagem_principal, imagens_internas: JSON.stringify(imagens_internas) }, {
+      where: { id },
+    });
+    if (updated) {
+      const updatedTrabalho = await Trabalho.findByPk(id);
+      res.status(200).json(updatedTrabalho);
+    } else {
+      res.status(404).json({ error: 'Trabalho não encontrada' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao atualizar a trabalho' });
+  }
+};
 
-// Método para excluir um trabalho por ID
+// Método para excluir uma notícia por ID
 exports.deleteTrabalho = async (req, res) => {
   const { id } = req.params;
   try {
@@ -93,15 +106,15 @@ exports.deleteTrabalho = async (req, res) => {
       where: { id },
     });
     if (deleted) {
-      res.status(200).json({message : 'Trabalho excluído com sucesso'});
+      res.status(200).json({ message: 'Trabalho excluída com sucesso' });
     } else {
-      res.status(404).json({ error: 'Trabalho não encontrado' });
+      res.status(404).json({ error: 'Trabalho não encontrada' });
     }
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Erro ao excluir o Trabalho' });
+    res.status(500).json({ error: 'Erro ao excluir a trabalhos' });
   }
 };
-
+  
   
   

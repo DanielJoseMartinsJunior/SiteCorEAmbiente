@@ -1,0 +1,28 @@
+{{!-- edit.handlebars --}}
+
+{{!-- Seção de conteúdo da página --}}
+<div class="container mt-4 w-80">
+    <h1 class="mb-4">Editar Publicação</h1>
+    <form id="editTrabalhoForm" enctype="multipart/form-data" method="post">
+        <div class="form-group mb-3">
+            <label for="editTitulo">Título</label>
+            <input type="text" class="form-control" id="editTitulo" name="titulo" value="{{trabalho.titulo}}" required>
+        </div>
+         <div class="form-group mb-3">
+            <label for="editDescricao">Descrição</label>
+            <input type="text" class="form-control" id="editTrabalho" name="descricao" value="{{trabalho.descricao}}" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="editImagemPrincipal">Imagem Principal</label>
+            <input type="file" class="form-control-file" id="editImagemPrincipal" name="imagem_principal" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="editImagensInternas">Imagens Internas</label>
+            <input type="file" class="form-control-file" id="editImagensInternas" name="imagens_internas" multiple>
+        </div>
+        <!-- Campo oculto para armazenar o ID da publicacao -->
+        <input type="hidden" id="editTrabalhoId" name="id" value="{{trabalho.id}}">
+        <a href="../trabalhos/" class="btn btn-secondary" id="cancelEditTrabalho"><i class="bi bi-x-circle"></i> Cancelar</a>
+        <button type="button" class="btn btn-primary" id="saveEditTrabalho" onclick="UpdateTrabalhoClick(event)"><i class="bi bi-check-circle"></i> Salvar</button>
+    </form>
+</div>

@@ -6,7 +6,11 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const sequelize = require('./src/conn/connection'); // Importe sua configuração do Sequelize
 const bannerRoutes = require('./src/routes/bannerRoutes');
-
+const produtoRoutes = require('./src/routes/produtoRoutes');
+const publicacaoRoutes = require('./src/routes/publicacaoRoutes');
+const trabalhoRoutes = require('./src/routes/trabalhoRoutes');
+const faqRoutes = require('./src/routes/faqRoutes');
+const depoimentoRoutes = require('./src/routes/depoimentoRoutes');
 const usuarioRoutes = require('./src/routes/usuarioRoutes');
 const cors = require('cors');
 
@@ -30,6 +34,11 @@ app.get('/', (req, res) => {
 
 // Use as rotas da API
 app.use('/api', bannerRoutes);
+app.use('/api', produtoRoutes);
+app.use('/api', publicacaoRoutes);
+app.use('/api', depoimentoRoutes);
+app.use('/api', trabalhoRoutes);
+app.use('/api', faqRoutes);
 app.use('/api',  usuarioRoutes);
 
 // Porta de escuta

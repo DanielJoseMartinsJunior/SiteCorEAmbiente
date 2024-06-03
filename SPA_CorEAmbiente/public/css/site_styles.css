@@ -116,29 +116,29 @@
 
 
 /*Notícias*/
-#noticias a{
+#produtoss a{
     color: var(--azul);;
     text-decoration : none;
 }
 
-#noticias a:hover{
+#produtos a:hover{
     color: var(--verde);;
 }
 
 /*Eventos*/
-#eventos{
+#servicos{
 padding-top: 1rem;
 border : 1px solid var(--cinza-claro);;
 border-top: 8px solid var(--verde);;
 
 }
 
-#eventos a{
+#servicos a{
     color: var(--verde);;
     text-decoration : none;
 }
 
-#eventos a:hover{
+#servicos a:hover{
     color: var(--azul);;
 }
 
