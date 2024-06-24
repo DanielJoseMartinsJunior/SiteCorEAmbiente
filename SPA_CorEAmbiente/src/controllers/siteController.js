@@ -109,6 +109,23 @@ exports.getTrabalhosPage = async (req, res) => {
   }
 };
 
+exports.getFaqsPage = async (req, res) => {
+  try {
+    console.log('Acessando a página de FAQs...');
+    console.log('Caminho do arquivo site_faq.handlebars:', path.join(__dirname, '../views/site/site_faq.handlebars'));
+
+    // Faz uma solicitação GET para a API que fornece as FAQs
+    const response = await api.get(`/faqs`);
+    const faqs = response.data;
+
+    // Renderiza a página site/site_faq.handlebars e passa as FAQs como contexto
+    res.render('site/site_faq', { faqs, layout: false });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao buscar FAQs' });
+  }
+};
+
 
 /*exports.getTestesPage = async (req, res) => {
   try {

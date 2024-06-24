@@ -1,4 +1,4 @@
-const Pergunta = require('../models/perguntas');
+const Pergunta = require('../models/Perguntas');
 const { Op } = require('sequelize');
 
 
