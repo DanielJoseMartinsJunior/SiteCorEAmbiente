@@ -1,4 +1,7 @@
-//npm install express sequelize mysql2 multer nodemailer bcryptjs jsonwebtoken
+//npm install express sequelize mysql2 multer nodemailer bcryptjs jsonwebtoken dotenv
+
+require('dotenv').config();
+
 
 const express = require('express');
 const app = express();
@@ -44,21 +47,28 @@ app.use('/api',  usuarioRoutes);
 // Porta de escuta
 const PORT = process.env.PORT || 3000;
 
-// Configurações do Sequelize
+// Sincronizar o Sequelize com o banco de dados
 sequelize.sync({ force: false }) // Altere para true se quiser que as tabelas sejam recriadas
-  .then(() => {
+  .then(async () => {
     console.log('Conectado ao banco de dados MySQL.');
 
-    //comandos para criar usuário admin caso ele não exista(recomendado comentar as linhas após a criação)
-    //importa a controller
-    const usuarioController = require('./src/controllers/usuarioController');
-    
-    //chama a função para criar o usuario admin (email: admin@admin.com, senha: admin@)
-    const created = usuarioController.createUsuarioAdmin();
+    // Comandos para criar usuário admin caso ele não exista (recomendado comentar as linhas após a criação)
+    try {
+      // Importa a controller
+      const usuarioController = require('./src/controllers/usuarioController');
 
+      // Chama a função para criar o usuario admin (email: admin@admin.com, senha: admin@)
+      await usuarioController.createUsuarioAdmin();
+      console.log('Usuário admin criado ou já existente.');
+
+    } catch (error) {
+      console.error('Erro ao criar usuário admin:', error);
+    }
+
+    // Iniciar o servidor
     app.listen(PORT, () => {
-        console.log(`Servidor rodando na porta ${PORT}`);
-      });
+      console.log(`Servidor rodando na porta ${PORT}`);
+    });
   })
   .catch((err) => {
     console.error('Erro ao conectar ao banco de dados:', err);
