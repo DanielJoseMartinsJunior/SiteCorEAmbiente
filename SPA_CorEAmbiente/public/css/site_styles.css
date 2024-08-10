@@ -230,3 +230,202 @@ footer p a {
 footer i{
     color: var(--cinza-claro);
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: #FFFAEE;
+}
+
+#navbar{
+    background-color: #FFFAEE;
+}
+
+.cinzel-default> {
+    font-family: "Cinzel", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+footer {
+    background-color: #26303a; /* Cor de fundo suave */
+    gap: 1250px;
+    padding: 20px;
+    text-align: center; /* Centraliza o conteúdo dentro do footer */
+    border-top: 1px solid #dee2e6; /* Linha sutil para separação */
+    display: flex;
+}
+
+/* Estilo para a seção de contato */
+.Contato {
+    display: flex;
+    flex-direction: column; /* Alinha os itens verticalmente */
+    align-items: right; /* Centraliza os itens horizontalmente */
+    gap: 15px; /* Espaço entre os itens */
+}
+
+/* Estilo para cada bloco de contato */
+#telefone, #email, #endereco {
+    display: flex;
+    align-items: center; /* Alinha o ícone e o texto verticalmente */
+    gap: 10px; /* Espaço entre o ícone e o texto */
+    font-family: Arial, sans-serif; /* Fonte padrão */
+    color: #333; /* Cor do texto */
+}
+
+/* Estilo para os ícones */
+#telefone img, #email img, #endereco img {
+    width: 24px; /* Tamanho padrão dos ícones */
+    height: 24px; /* Tamanho padrão dos ícones */
+    object-fit: contain; /* Garante que a imagem se ajuste ao tamanho */
+}
+
+/* Estilo para o texto de contato */
+#telefone p, #email p, #endereco p {
+    margin: 0; /* Remove margem padrão dos parágrafos */
+    font-size: 16px; /* Tamanho da fonte */
+}
+
+/* Estilo adicional opcional */
+footer a {
+    color: #007bff; /* Cor dos links */
+    text-decoration: none; /* Remove sublinhado dos links */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+.RedesSociais {
+    display: flex;
+    flex-direction: column; /* Alinha os itens verticalmente */
+    align-items: right; /* Centraliza os itens horizontalmente */
+    gap: 15px; /* Espaço entre os itens */
+}
+
+/* Estilo para cada bloco de rede social */
+#facebook, #twitter, #instagram, #linkedin {
+    display: flex;
+    align-items: center; /* Alinha o ícone e o texto verticalmente */
+    gap: 10px; /* Espaço entre o ícone e o texto */
+    font-family: Arial, sans-serif; /* Fonte padrão */
+    color: #333; /* Cor do texto */
+}
+
+/* Estilo para os ícones */
+#facebook img, #twitter img, #instagram img, #linkedin img {
+    width: 24px; /* Tamanho padrão dos ícones */
+    height: 24px; /* Tamanho padrão dos ícones */
+    object-fit: contain; /* Garante que a imagem se ajuste ao tamanho */
+}
+
+/* Estilo para o texto de redes sociais */
+#facebook p, #twitter p, #instagram p, #linkedin p {
+    margin: 0; /* Remove margem padrão dos parágrafos */
+    font-size: 16px; /* Tamanho da fonte */
+}
+
+/* Estilo adicional opcional */
+footer a {
+    color: #007bff; /* Cor dos links */
+    text-decoration: none; /* Remove sublinhado dos links */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+footer p{
+    color:#d4cebe;
+}
+.carousel-container {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+  }
+  .meio{
+    width: 100%;
+  }
+  .carousel {
+    display: flex;
+    transition: transform 1.5s ease;
+  }
+  
+  .slide {
+    min-width: 100%;
+    position: relative;
+  }
+  
+  .slide img {
+    width: 1500px;
+    max-height: 500px;
+    display: block;
+  }
+  
+  .caption {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 15px;
+    font-size: 14px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .slide:hover .caption {
+    opacity: 1;
+  }
+
+  .carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px; /* Defina a largura do fundo do botão */
+    height: 40px; /* Defina a altura do fundo do botão */
+    z-index: 2;
+}
+
+.carousel-control-prev {
+    left: 15px;
+}
+
+.carousel-control-next {
+    right: 15px;
+}
+
+/* CSS: Ajuste do posicionamento e transições */
+.dropdown-menu {
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    margin-top: 0;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+    margin-top: 0; /* Remove espaço entre item principal e submenu */
+}
+
+.navbar .dropdown-menu {
+    margin-top: 0; /* Remove qualquer espaço adicional */
+    top: 100%; /* Garante que o submenu começa logo abaixo do item principal */
+}
