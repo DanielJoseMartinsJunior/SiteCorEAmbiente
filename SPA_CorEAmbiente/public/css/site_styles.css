@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 /*Variáveis*/
 :root {
     --verde: #49c32c;
@@ -10,8 +12,10 @@
 
 /*Geral*/
 *{
-    font-family: 'Lato', sans-serif;
-    color: var(--cinza-medio);
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
 }
 
 /*Menu*/
@@ -217,10 +221,17 @@ h5{
 }
 
 /*Rodapé*/
-#rodape{
-    padding: 30px 30px;
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
     background-color: var(--azul-escuro);;
+    padding: 20px; /* Adiciona um espaçamento interno */
 }
+
+
 
 footer p a {
 	margin: 5px 15px;
@@ -233,12 +244,7 @@ footer i{
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    padding: 0;
-    margin: 0;
-}
+
 body {
     background-color: #FFFAEE;
 }
@@ -252,14 +258,6 @@ body {
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-}
-footer {
-    background-color: #26303a; /* Cor de fundo suave */
-    gap: 1250px;
-    padding: 20px;
-    text-align: center; /* Centraliza o conteúdo dentro do footer */
-    border-top: 1px solid #dee2e6; /* Linha sutil para separação */
-    display: flex;
 }
 
 /* Estilo para a seção de contato */
@@ -409,6 +407,12 @@ footer p{
     right: 15px;
 }
 
+.carousel-img {
+    height: 575px;
+    object-fit: cover;
+}
+
+
 /* CSS: Ajuste do posicionamento e transições */
 .dropdown-menu {
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
@@ -428,4 +432,86 @@ footer p{
 .navbar .dropdown-menu {
     margin-top: 0; /* Remove qualquer espaço adicional */
     top: 100%; /* Garante que o submenu começa logo abaixo do item principal */
+}
+
+
+.product-card {
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.1);
+}
+
+.product-info {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.product-info h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.product-card:hover .product-info {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.btn-outline-light {
+    border: 2px solid #fff;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    background: #fff;
+    color: #000;
+}
+
+.btn-outline-light i {
+    margin-left: 10px;
+}
+
+
+#publicacoes {
+    
+}
+
+.publication-link p {
+    margin: 0;
+    color: #7d7d7d;
+}
+
+.publication-link a {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.publication-link a:hover {
+    color: #ff6600; /* Cor de destaque ao passar o mouse */
+}
+
+.publication-link i {
+    margin-left: 10px;
+    font-size: 1.2rem;
 }

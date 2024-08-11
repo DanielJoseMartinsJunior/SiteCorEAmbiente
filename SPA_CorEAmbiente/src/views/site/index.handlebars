@@ -2,34 +2,28 @@
 <html lang="pt-br">
 
 <head>
-
     <title>Cor e Ambientes Decorações</title>
-    <!-- Required meta tags seu -->
+    <!-- Meta tags obrigatórias -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Bootstrap CSS v5.2.1 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-    <!--Fonte-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-        rel="stylesheet">
-
-    <!--Css personalizado-->
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <!-- CSS personalizado -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/site_styles.css">
     <link rel="stylesheet" href="css/header.css">
-
+    <!-- Favicon -->
     <link rel="shortcut icon" href="../img/favicon.png">
-
 </head>
 
 <body>
-
     <header id="home">
         <nav id="navbar">
             <div id="navbar-logo">
@@ -42,7 +36,6 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a href="#">Produtos</a>
-
                         <ul class="dropdown-menu">
                             <li class="nav-item">
                                 <a href="#cortinas">Cortinas</a>
@@ -66,7 +59,6 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a href="#contact">Mais</a>
-
                         <ul class="dropdown-menu">
                             <li class="nav-item">
                                 <a href="#about">Sobre Nós</a>
@@ -114,232 +106,21 @@
             </ul>
         </div>
     </header>
+
     <section class="carousel-container">
-        <div>
-            <h2 style="text-align: center;">Nossos trabalhos</h2>
-        </div>
-
         <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="row">
-                <div class="col-12">
-
-                </div>
-            </div>
             <div class="carousel-indicators">
                 {{#each banners}}
                 <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="{{@index}}" {{#if
                     active}} class="active" aria-current="true" {{/if}} aria-label="Slide{{ordem}}"></button>
                 {{/each}}
-
             </div>
             <div class="carousel-inner">
                 {{#each banners}}
-                {{#if active}}
-                <div class="carousel-item active" data-bs-interval="3000">
-                    {{else}}
-                    <div class="carousel-item" data-bs-interval="3000">
-                        {{/if}}
-                        <img src="http://localhost:3000/img/banners/{{imagem}}" class="d-block w-100"
-                            style="height: 575px;">
-
-                    </div>
-                    {{/each}}
-
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-    </section>
-
-    <!--Cursos-->
-    <section id="cursos">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h4>Conheça nossos cursos</h4>
-                </div>
-            </div>
-            <div class="row">
-                {{#each cursos}}
-                <div class="col-md-3 mb-3">
-                    <div class="card">
-                        <img src="http://localhost:3000/img/cursos/{{imagem_principal}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{titulo}}</h5>
-                            <p class="card-text">{{resumo}}</p>
-                            <a href="#" class="btn btn-primary verde">Saiba mais...</a>
-                        </div>
-                    </div>
+                <div class="carousel-item {{#if active}}active{{/if}}" data-bs-interval="3000">
+                    <img src="http://localhost:3000/img/banners/{{imagem}}" class="d-block w-100 carousel-img">
                 </div>
                 {{/each}}
-
-            </div>
-        </div>
-
-    </section>
-    <!--Institucional-->
-    <section id="institucional">
-        <div class="container border-bottom pb-5">
-            <div class="row">
-                <div class="col-12">
-                    <h4>Bem vindo ao Royal College</h4>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7">
-                    <a href="#"><img src="../img/video_image.jpg" alt="" width="100%"></a>
-                </div>
-                <div class="col-md-5">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quod, dignissimos facilis
-                        autem maiores provident sequi ducimus consequatur eveniet, porro, soluta voluptate amet dicta
-                        quam sunt possimus neque deleniti veritatis.
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quod, dignissimos facilis
-                        autem maiores provident sequi ducimus consequatur eveniet, porro, soluta voluptate amet dicta
-                        quam sunt possimus neque deleniti veritatis.
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quod, dignissimos facilis
-                        autem maiores provident sequi ducimus consequatur eveniet, porro, soluta voluptate amet dicta
-                        quam sunt possimus neque deleniti veritatis.
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quod, dignissimos facilis
-                        autem maiores provident sequi ducimus consequatur eveniet, porro, soluta voluptate amet dicta
-                        quam sunt possimus neque deleniti veritatis.
-                    </p>
-                    <a href="#" class="btn btn-primary azul">Conheça melhor nossa instituição...</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!--Notícias e eventos-->
-    <section id="produtos-servicos" class="mt-2 mb-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8" id="produtos">
-                    <h4>Produtos e Serviços</h4>
-                    {{#each produtos}}
-                    <hr>
-                    <div class="card mb-3">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="http://localhost:3000/img/produtos/{{imagem_principal}}"
-                                    class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div><img src="http://localhost:3000/img/produtos/{{imagem_principal}}"
-                                    class="img-fluid rounded-start" alt="..."></div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <a href="#">
-                                        <h5 class="card-title">{{titulo}}
-                                        </h5>
-                                    </a>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {{/each}}
-
-                </div>
-                <div class="col-md-4" id="eventos">
-                    <h4>Próximos Eventos</h4>
-                    {{#each eventos}}
-                    <hr>
-                    <div class="row g-0">
-                        <div class="col-3 px-2">
-                            <div class="data text-center">
-                                <div class="dia">{{formatDay data_evento}}</div>
-                                <div class="mes">{{formatMonth data_evento}}</div>
-                            </div>
-                        </div>
-                        <div class="col-9 px-2">
-                            <a href="#">
-                                <h5>{{titulo}}</h5>
-                            </a>
-                            <p><small class="text-muted"><i class="bi bi-geo-alt-fill"></i>{{local}}<br>
-                                    <i class="bi bi-clock"></i>{{hora_evento}}</small></p>
-                        </div>
-                    </div>
-                    {{/each}}
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="publicacoes" class="mt-2 mb-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8" id="publicacoes">
-                    <h4>Publicações</h4>
-                    {{#each publicacoes}}
-                    <hr>
-                    <div class="card mb-3">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="http://localhost:3000/img/publicacoes/{{imagem_principal}}"
-                                    class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div><img src="http://localhost:3000/img/publicacoes/{{imagem_principal}}"
-                                    class="img-fluid rounded-start" alt="..."></div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <a href="#">
-                                        <h5 class="card-title">{{titulo}}
-                                        </h5>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {{/each}}
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--Carousel banners-->
-    <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-bs-ride="carousel">
-        <div class="row">
-            <div class="col-12">
-
-            </div>
-        </div>
-        <div class="carousel-indicators">
-            {{#each depoimentos}}
-            <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="{{@index}}" {{#if active}}
-                class="active" aria-current="true" {{/if}} aria-label="Slide{{ordem}}"></button>
-            {{/each}}
-
-        </div>
-        <div class="carousel-inner">
-            {{#each depoimentos}}
-            {{#if active}}
-            <div class="carousel-item active" data-bs-interval="3000">
-                {{else}}
-                <div class="carousel-item" data-bs-interval="3000">
-                    {{/if}}
-                    <img src="http://localhost:3000/img/depoimentos/{{imagem}}" class="d-block w-100"
-                        style="height: 575px;">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>{{titulo}}</h5>
-                        <p>{{descricao}}
-
-                    </div>
-                </div>
-                {{/each}}
-
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
                 data-bs-slide="prev">
@@ -352,125 +133,183 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+    </section>
 
-        </header>
-        <!--Nossos números-->
-        <section id="numeros" class="paralax">
-            <a href="/page-testes">Ir para a página de testes</a>
-        </section>
-        <section id="numeros" class="paralax">
-            <div class="container">
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <h4>Conheça nossos números</h4>
-                    </div>
+
+    <!-- Institucional -->
+    <section id="institucional" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-8 text-center">
+                    <h2>Bem-Vindo a Cor e Ambiente Decorações</h2>
+                    <p>Nossa empresa é especializada em cortinas, persianas e artigos de decoração,
+                        proporcionando soluções elegantes e sofisticadas para todos os tipos de ambientes.</p>
+                    <a href="#contato" class="btn btn-primary">Entre em Contato</a>
                 </div>
-                <div class="row">
-                    {{#each numeros}}
-                    <div class="col-sm-6 col-md-3 mb-3 pb-3 border-bottom border-md-0">
-                        <div class="numero text-center">
-                            <div class="icone">{{{icone}}}</div>
-                            <div class="contador">
-                                <span class="timer">{{numero}}</span>
-                            </div>
-                            <div class="separador"></div>
-                            <p>{{titulo}}</p>
-                        </div>
-                    </div>
-                    {{/each}}
-                    <!--
             </div>
         </div>
     </section>
 
-    <!--Contato-->
-                    <section id="contato">
-                        <div class="container">
-                            <div class="row pt-5">
-                                <div class="col-md-6 borda-azul p-4">
-                                    <h4>Entre em contato conosco</h4>
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore quo placeat
-                                        similique eveniet
-                                        veniam optio laborum dignissimos voluptatem libero! Sint voluptate facilis
-                                        aperiam architecto
-                                        debitis natus reprehenderit modi eligendi tenetur.</p>
-                                    <form id="formSendMessage">
-                                        <div class="mb-3">
-                                            <label for="nome" class="form-label">Nome</label>
-                                            <input type="text" name="nome" class="form-control" id="nome"
-                                                placeholder="Digite seu Nome">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="email" class="form-label">Email</label>
-                                            <input type="email" name="email" class="form-control" id="email"
-                                                placeholder="Digite seu Email">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="mensagem" class="form-label">Sua mensagem</label>
-                                            <textarea class="form-control" name="mensagem" id="mensagem"
-                                                rows="3"></textarea>
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="button" id="sendMessage" value="Enviar"
-                                                class="btn btn-primary azul">
-                                        </div>
-                                        <div id="resposta"></div>
-                                    </form>
-                                </div>
-                                <div class="col-md-6 p-4">
-                                    <img src="../img/contato.jpg" class="img-fluid">
-                                </div>
-                            </div>
+
+    <!-- Produtos e Serviços -->
+    <section id="produtos" class="py-5 bg-dark text-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Nossos Produtos</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="product-card position-relative">
+                        <img src="img/product1.jpg" class="img-fluid" alt="Cortinas">
+                        <div class="product-info position-absolute">
+                            <h3>Cortinas</h3>
                         </div>
-
-                    </section>
-
-
-                    <!--Rodapé-->
-                    <footer>
-
-                        <div class="Contato">
-                            <div id="telefone">
-                                <img src="img/zap.png" alt="icone-whatsApp">
-                                <p>(47)9999999999</p>
-                            </div>
-                            <div id="email">
-                                <img src="img/letter-line-icon-png.webp" alt="emial-icon">
-                                <p>coreambiente@gmail.com</p>
-                            </div>
-                            <div id="endereco">
-                                <img src="img/localiza.png" alt="icone-localizacao">
-                                <p>Rua de canoinhas,n 444- centro, canoinhas SC</p>
-                            </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="product-card position-relative">
+                        <img src="img/product2.jpg" class="img-fluid" alt="Persianas">
+                        <div class="product-info position-absolute">
+                            <h3>Persianas</h3>
                         </div>
-
-                        <div class="RedesSociais">
-
-                            <div id="facebook">
-                                <img src="img/facebook-icon.png" alt="ícone-facebook">
-                                <p>Facebook</p>
-                            </div>
-                            <div id="twitter">
-                                <img src="img/twitter-icone.png" alt="ícone-twitter">
-                                <p>Twitter</p>
-                            </div>
-                            <div id="instagram">
-                                <img src="img/instagram-icon.png" alt="ícone-instagram">
-                                <p>Instagram</p>
-                            </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="product-card position-relative">
+                        <img src="img/product3.jpg" class="img-fluid" alt="Decorações">
+                        <div class="product-info position-absolute">
+                            <h3>Decorações</h3>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="#all-categories" class="btn btn-outline-light mt-4">Ver Todas as Categorias <i
+                        class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
 
 
-                    </footer>
-                    <script src="scripts/script.js"></script>
+    <section id="nossosTrabalhos" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Nossos Trabalhos</h2>
+            <div class="row">
+                {{#each trabalhos}}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="http://localhost:3000/img/trabalhos/{{imagem_principal}}" class="card-img-top"
+                            alt="{{titulo}}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{titulo}}</h5>
+                            <p class="card-text">{{descricao}}</p>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
 
-                    <!-- Bootstrap JavaScript Libraries -->
-                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-                    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-                    <script src="../js/siteScripts.js"></script>
+    <section id="publicacoes" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Publicações Recentes</h2>
+            <div class="row">
+                {{#each publicacoes}}
+                <div class="col-md-6 mb-4">
+                    <div class="card flex-md-row">
+                        <img src="http://localhost:3000/img/publicacoes/{{imagem_principal}}"
+                            class="img-fluid rounded-start" alt="{{titulo}}" style="width: 200px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{titulo}}</h5>
+                            <p class="card-text">{{resumo}}</p>
+                            <a href="{{link}}" class="btn btn-primary">Leia Mais</a>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
 
+    <section id="faq" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Perguntas Frequentes</h2>
+            <div class="accordion" id="faqAccordion">
+                {{#each faqs}}
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading{{@index}}">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse{{@index}}" aria-expanded="true"
+                            aria-controls="collapse{{@index}}">
+                            {{pergunta}}
+                        </button>
+                    </h2>
+                    <div id="collapse{{@index}}" class="accordion-collapse collapse {{#if @first}}show{{/if}}"
+                        aria-labelledby="heading{{@index}}" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            {{resposta}}
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
 
+    <!-- Contato -->
+    <section id="contato" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Entre em contato conosco</h4>
+                    <form id="formSendMessage">
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" name="nome" class="form-control" id="nome" placeholder="Digite seu Nome">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input type="email" name="email" class="form-control" id="email"
+                                placeholder="Digite seu E-mail">
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefone" class="form-label">Telefone</label>
+                            <input type="text" name="telefone" class="form-control" id="telefone"
+                                placeholder="Digite seu Telefone">
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensagem" class="form-label">Mensagem</label>
+                            <textarea name="mensagem" class="form-control" id="mensagem" rows="4"
+                                placeholder="Digite sua mensagem"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <h4>Nosso endereço</h4>
+                    <p><i class="bi bi-geo-alt-fill"></i> R. Adolfo Bading, 760 - Centro, Canoinhas - SC, 89460-000</p>
+                    <p><i class="bi bi-telephone-fill"></i> (47) 3622-2181</p>
+                    <p><i class="bi bi-clock-fill"></i> Seg - Sex: 08:00 - 18:00 | Sabado: 08:30 - 13:00</p>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14322.105486212708!2d-50.3825622!3d-26.1795502!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94e71276f5ef1837%3A0x2385f5fd93cf9a36!2sCor%20e%20Ambiente%20Decora%C3%A7%C3%B5es!5e0!3m2!1spt-BR!2sbr!4v1723351565151!5m2!1spt-BR!2sbr"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center text-lg-start" id="rodape">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2023 Cor e Ambientes Decorações. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JS personalizado -->
+    <script src="js/scripts.js"></script>
 </body>
 
 </html>
