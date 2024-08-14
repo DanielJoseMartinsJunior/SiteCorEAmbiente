@@ -14,6 +14,7 @@ const trabalhoRoutes = require('./src/routes/trabalhoRoutes');
 const depoimentoRoutes = require('./src/routes/depoimentoRoutes');
 const loginRoutes = require('./src/routes/loginRoutes');
 const siteRoutes = require('./src/routes/siteRoutes');
+const sitePubliRoutes = require('./src/routes/site_publicacaoRoutes')
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -143,6 +144,7 @@ app.use('/', depoimentoRoutes);
 app.use('/', usuarioRoutes); 
 app.use('/', loginRoutes); 
 app.use('/', siteRoutes);
+app.use('/', sitePubliRoutes)
 
 // Inicializa o servidor na porta 5000
 const PORT = process.env.PORT || 5000;
