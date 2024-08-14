@@ -27,12 +27,30 @@ exports.createTrabalho= async (req, res) => {
 exports.getAllTrabalhos = async (req, res) => {
   try {
     const trabalhos = await Trabalho.findAll();
-    res.status(200).json(trabalhos);
+
+    // Logando o resultado antes da deserialização
+    console.log('Trabalhos retornados do banco de dados:', trabalhos);
+
+    // Deserializa imagens_internas para um array
+    const trabalhosComImagens = trabalhos.map(trabalho => {
+      const imagens = trabalho.imagens_internas ? JSON.parse(trabalho.imagens_internas) : [];
+      
+      // Logando as imagens deserializadas
+      console.log('Imagens internas para o trabalho:', imagens);
+      
+      return {
+        ...trabalho.get(),
+        imagens_internas: imagens
+      };
+    });
+
+    res.status(200).json(trabalhosComImagens);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Erro ao buscar as trabalhos' });
+    console.error('Erro ao buscar os trabalhos:', error);
+    res.status(500).json({ error: 'Erro ao buscar os trabalhos' });
   }
 };
+
 
 // Método para buscar uma notícia por ID
 exports.getTrabalhoById = async (req, res) => {

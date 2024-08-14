@@ -1,3 +1,9 @@
+
+
+// Define o helper jsonParse
+Handlebars.registerHelper('jsonParse', function(jsonString) {
+    return JSON.parse(jsonString);
+});
 document.addEventListener('DOMContentLoaded', function() {
   // Mobile menu toggle
   const mobileBtn = document.querySelector('#mobile-btn');
