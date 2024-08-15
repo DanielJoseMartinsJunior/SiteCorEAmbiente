@@ -1,39 +1,46 @@
 const url = "http://localhost:3000/";
 
-///     FUNÇÕES DO CADASTRO DE NOTICIAS  ///
-// Função para confirmar a exclusão do noticia
+///     FUNÇÕES DO CADASTRO DE FAQS  ///
+// Função para confirmar a exclusão da FAQ
 function confirmDeleteFaq(id) {
-    //busca o token armazenado no login
     const token = localStorage.getItem('token');
+    if (!token) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Erro',
+            text: 'Token não encontrado. Por favor, faça login novamente.',
+        });
+        return;
+    }
 
-    // Configurar o cabeçalho com a autorizção do token
     const config = {
         headers: {
             'Authorization': `Bearer ${token}`
         },
     };
 
-    // Fazer a requisição de exclusão usando Axios
     axios.delete(`${url}api/faqs/${id}`, config)
         .then(response => {
             console.log(response.data);
 
-            // Fechar o modal após a exclusão
             $(`#confirmDeleteModal${id}`).modal('hide');
 
             Swal.fire({
                 icon: 'success',
-                title: 'Faq excluído com sucesso',
+                title: 'FAQ excluída com sucesso',
                 showConfirmButton: false,
                 timer: 1500
             }).then(() => {
-                // Após o tempo definido (1500 ms), redirecione para a página desejada
                 window.location.href = `../faqs/`;
             });
         })
         .catch(error => {
-            console.error('Erro ao excluir faq:', error);
-            // Lida com erros, se necessário
+            console.error('Erro ao excluir FAQ:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Erro ao excluir a FAQ. Por favor, tente novamente.',
+            });
         });
 }
 
@@ -44,107 +51,122 @@ function validateForm(formData) {
     const ordem = formData.get('ordem');
 
     if (!titulo || !resposta || !ordem) {
-        // Exibir mensagem de erro para o usuário
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'Por favor, preencha todos os campos obrigatórios!',
         });
-        return false; // Impede o envio do formulário
+        return false;
     }
     if (ordem < 1) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'A ordem deve ser um número maior ou igual a 1!',
-          });
+        });
         return false;
     }
 
-    return true; // Todos os campos estão preenchidos corretamente
+    return true;
 }
 
 // Evento quando o botão "Salvar" do formulário de edição é clicado
 function UpdateFaqClick(event) {
-    event.preventDefault(); // Evita o envio padrão do formulário
+    event.preventDefault();
 
-    // Obter os dados do formulário de edição
     const formData = new FormData(document.querySelector('#editFaqForm'));
-
-    // Obter o ID do trabalho a ser editado
     const faqId = document.querySelector('#editFaqId').value;
 
-    // Chama a função de validação antes de enviar a solicitação PUT
     if (validateForm(formData)) {
-        //busca o token armazenado no login
         const token = localStorage.getItem('token');
+        if (!token) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Token não encontrado. Por favor, faça login novamente.',
+            });
+            return;
+        }
 
-        // Configurar o cabeçalho com a autorizção do token
         const config = {
             headers: {
                 'Authorization': `Bearer ${token}`
             },
         };
 
-        // Fazer uma solicitação PUT para atualizar o trabalho
         axios.put(`${url}api/faqs/${faqId}`, formData, config)
             .then(response => {
                 console.log(response.data);
 
                 Swal.fire({
                     icon: 'success',
-                    title: 'Faq alterado com sucesso',
+                    title: 'FAQ alterada com sucesso',
                     showConfirmButton: false,
                     timer: 1500
                 }).then(() => {
-                    // Após o tempo definido (1500 ms), redirecione para a página desejada
                     window.location.href = `../faqs/`;
                 });
             })
             .catch(error => {
-                console.error('Erro ao atualizar faq:', error);
-                // Lida com erros, se necessário
+                console.error('Erro ao atualizar FAQ:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erro',
+                    text: 'Erro ao atualizar a FAQ. Por favor, tente novamente.',
+                });
             });
     }
 }
 
 // Evento quando o botão "Salvar" do formulário de criação é clicado
 function CreateFaqClick(event) {
-    event.preventDefault(); // Evita o envio padrão do formulário
+    event.preventDefault();
 
-    // Obter os dados do formulário de criação
-    const formData = new FormData(document.querySelector('#createFaqForm'));
+    const formData = {
+        titulo: document.querySelector('#createTitulo').value,
+        resposta: document.querySelector('#createResposta').value,
+        ordem: document.querySelector('#createOrdem').value
+    };
 
-    // Chama a função de validação antes de enviar a solicitação POST
-    if (validateForm(formData)) {
-        //busca o token armazenado no login
+    if (validateForm(new FormData(document.querySelector('#createFaqForm')))) {
         const token = localStorage.getItem('token');
+        if (!token) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Token não encontrado. Por favor, faça login novamente.',
+            });
+            return;
+        }
 
-        // Configurar o cabeçalho com a autorizção do token
         const config = {
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
             },
         };
 
-        // Fazer uma solicitação POST para criar o trabalho
-        axios.post(`${url}api/faqs/`, formData, config)  // Corrigido de 'trarabalhos' para 'trabalhos'
+        axios.post(`${url}api/faqs/`, JSON.stringify(formData), config)
             .then(response => {
                 console.log(response.data);
 
                 Swal.fire({
                     icon: 'success',
-                    title: 'Faq criado com sucesso',
+                    title: 'FAQ criada com sucesso',
                     showConfirmButton: false,
                     timer: 1500
                 }).then(() => {
-                    // Após o tempo definido (1500 ms), redirecione para a página desejada
                     window.location.href = `../faqs/`;
                 });
             })
             .catch(error => {
-                console.error('Erro ao criar faq:', error);
-                // Lida com erros, se necessário
+                console.error('Erro ao criar FAQ:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erro',
+                    text: 'Erro ao criar a FAQ. Por favor, tente novamente.',
+                });
             });
     }
 }
+

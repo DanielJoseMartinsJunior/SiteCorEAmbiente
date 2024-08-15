@@ -9,7 +9,7 @@ const Faq = sequelize.define('Faq', {
         allowNull: true,
       },
       resposta: {
-        type: DataTypes.TEXT(500),
+        type: DataTypes.TEXT,
         allowNull: true,
       },
       ordem: {

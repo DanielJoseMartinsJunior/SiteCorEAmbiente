@@ -9,10 +9,10 @@ router.post('/perguntas', perguntasController.createPergunta);
 router.get('/perguntas', perguntasController.getAllPerguntas);
 
 // Rota para buscar perguntas por título
-router.get('/perguntas/search', perguntasController.searchPeguntasByTitle);
+router.get('/perguntas/search', perguntasController.searchPerguntasByTitle);
 
 // Rota para atualizar uma pergunta por ID
-router.put('/perguntas/:id', perguntasController.uptadePergunta);
+router.put('/perguntas/:id', perguntasController.updatePergunta);
 
 // Rota para excluir uma pergunta por ID
 router.delete('/perguntas/:id', perguntasController.deletePergunta);

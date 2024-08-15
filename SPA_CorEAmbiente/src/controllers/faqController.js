@@ -1,70 +1,67 @@
-// noticiaController.js
-
 const api = require('../config/api');
 
-// Método para buscar todas as publicacoes
+// Método para buscar todas as FAQs
 exports.getAllFaqs = async (req, res) => {
   try {
-    // Faz uma solicitação GET para a API que fornece as publicacoes
+    // Faz uma solicitação GET para a API que fornece as FAQs
     const response = await api.get(`/faqs`);
 
     // Obtenha os dados JSON da resposta
     const faqs = response.data;
 
-    // Renderiza a página publicacao/index.handlebars e passa as publicacoes como contexto
-    res.render('faq/', { faqs });
+    // Renderiza a página faq/index.handlebars e passa as FAQs como contexto
+    res.render('faq/index', { faqs });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Erro ao buscar faqs' });
+    res.status(500).json({ error: 'Erro ao buscar FAQs' });
   }
 };
 
-// Método para buscar publicacao para edição
-exports.editFaq= async (req, res) => {
+// Método para buscar FAQ para edição
+exports.editFaq = async (req, res) => {
   try {
     const { id } = req.params;
-    // Faz uma solicitação GET para a API que fornece a publicacao
+    // Faz uma solicitação GET para a API que fornece a FAQ
     const response = await api.get(`/faqs/${id}`);
 
     // Obtenha os dados JSON da resposta
     const faq = response.data;
 
-    // Renderiza a página publicacao/edit.handlebars e passa a publicacao como contexto
+    // Renderiza a página faq/edit.handlebars e passa a FAQ como contexto
     res.render('faq/edit', { faq });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Erro ao buscar faq' });
+    res.status(500).json({ error: 'Erro ao buscar FAQ' });
   }
 };
 
-// Método para apresentar formulário de criação da publicacao
+// Método para apresentar formulário de criação da FAQ
 exports.createFaq = async (req, res) => {
   try {
-    // Renderiza a página publicacao/create.handlebars
+    // Renderiza a página faq/create.handlebars
     res.render('faq/create');
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Erro ao mostrar formulário de criação de faqs' });
+    res.status(500).json({ error: 'Erro ao mostrar formulário de criação de FAQs' });
   }
 };
 
-
-// Método para buscar todas as publicacoes
+// Método para buscar FAQs por título
 exports.searchFaqsByTitle = async (req, res) => {
   try {
-    // Obter o valor inserido no campo de pesquisa trabalho
-    const valorPesquisa = req.body.valorPesquisa
+    // Obter o valor inserido no campo de pesquisa
+    const valorPesquisa = req.query.titulo;
 
-    // Fazer uma solicitação GET para buscar banners com base no título
-    const response = await api.get(`/faqs/search?titulo=${valorPesquisa}`)
+    // Fazer uma solicitação GET para buscar FAQs com base no título
+    const response = await api.get(`/faqs/search?titulo=${valorPesquisa}`);
 
     // Obtenha os dados JSON da resposta
     const faqs = response.data;
 
-    // Renderiza a página publicacao/index.handlebars e passa as publicacoes como contexto
-    res.render('faq/', { faqs });
+    // Renderiza a página faq/index.handlebars e passa as FAQs como contexto
+    res.render('faq/index', { faqs });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Erro ao buscar faqs' });
+    res.status(500).json({ error: 'Erro ao buscar FAQs' });
   }
 };
