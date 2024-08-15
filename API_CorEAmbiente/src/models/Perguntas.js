@@ -1,6 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../conn/connection'); // Importe sua configuração do Sequelize
-const Pergunta = sequelize.define('Pergunta', {
+
+const Pergunta = sequelize.define('pergunta', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,

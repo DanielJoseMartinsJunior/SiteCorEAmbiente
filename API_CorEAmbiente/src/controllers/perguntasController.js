@@ -1,9 +1,9 @@
-const Pergunta = require('../models/Perguntas');
+const pergunta = require('../models/Perguntas');
 const { Op } = require('sequelize');
 
 
 //Metodo para criar uma nova pergunta e resposta
-exports.cratePergunta = async   (req,res)=>{
+exports.createPergunta = async   (req,res)=>{
     try{
         const{titulo,resposta} = req.body;
         const pergunta = await Pergunta.create({titulo,resposta});

@@ -5,7 +5,7 @@ const router = express.Router();
 const siteController = require('../controllers/siteController');
 
 router.get('/lista-publicacoes', siteController.getPublicacoesPage);
-router.get('/lista-faqs', siteController.getFaqsPage);
+//router.get('/lista-faqs', siteController.getFaqsPage);
 router.get('/lista-trabalhos', siteController.getTrabalhosPage);
 router.get('/', siteController.getAllDatas);
 

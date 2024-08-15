@@ -45,9 +45,13 @@ exports.getAllDatas = async (req, res) => {
     const publicacoes = response.data;
     response = await api.get(`/trabalhos`);
     const trabalhos = response.data;
+    response = await api.get(`/perguntas`);
+    const pergunta = response.data;
+    response = await api.get(`/faqs`);
+    const faqs = response.data;
    
     // Renderiza a página site/index.handlebars e passa os sites como contexto
-    res.render('site/', { banners, produtos, depoimentos, publicacoes, trabalhos, layout: false });
+    res.render('site/', { banners, produtos, depoimentos, publicacoes, trabalhos, faqs, layout: false });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Erro ao buscar sites' });
@@ -109,7 +113,7 @@ exports.getTrabalhosPage = async (req, res) => {
   }
 };
 
-exports.getFaqsPage = async (req, res) => {
+/* exports.getFaqsPage = async (req, res) => {
   try {
     console.log('Acessando a página de FAQs...');
     console.log('Caminho do arquivo site_faq.handlebars:', path.join(__dirname, '../views/site/site_faq.handlebars'));

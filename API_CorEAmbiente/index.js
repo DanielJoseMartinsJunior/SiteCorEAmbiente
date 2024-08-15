@@ -9,10 +9,11 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const sequelize = require('./src/conn/connection'); // Importe sua configuração do Sequelize
 const bannerRoutes = require('./src/routes/bannerRoutes');
+const faqRoutes = require('./src/routes/faqRoutes');
 const produtoRoutes = require('./src/routes/produtoRoutes');
 const publicacaoRoutes = require('./src/routes/publicacaoRoutes');
 const trabalhoRoutes = require('./src/routes/trabalhoRoutes');
-const faqRoutes = require('./src/routes/faqRoutes');
+const perguntasRoutes = require('./src/routes/PerguntasRoutes');
 const depoimentoRoutes = require('./src/routes/depoimentoRoutes');
 const usuarioRoutes = require('./src/routes/usuarioRoutes');
 const cors = require('cors');
@@ -41,6 +42,7 @@ app.use('/api', produtoRoutes);
 app.use('/api', publicacaoRoutes);
 app.use('/api', depoimentoRoutes);
 app.use('/api', trabalhoRoutes);
+app.use('/api', perguntasRoutes);
 app.use('/api', faqRoutes);
 app.use('/api',  usuarioRoutes);
 

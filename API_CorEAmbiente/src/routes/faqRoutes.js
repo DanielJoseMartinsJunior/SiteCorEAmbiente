@@ -1,20 +1,22 @@
+// routes/noticiaRoutes.js
+
 const express = require('express');
 const router = express.Router();
-const perguntasController = require('../controllers/perguntasController');
+const faqController = require('../controllers/faqController');
 
 // Rota para criar uma nova pergunta
-router.post('/perguntas', perguntasController.cratePergunta);
+router.post('/faqs', faqController.createFaq);
 
 // Rota para listar todas as perguntas
-router.get('/perguntas', perguntasController.getAllPerguntas);
+router.get('/faqs', faqController.getAllFaqs);
 
 // Rota para buscar perguntas por título
-router.get('/perguntas/search', perguntasController.searchPeguntasByTitle);
+router.get('/faqs/search', faqController.searchFaqsByTitle);
 
 // Rota para atualizar uma pergunta por ID
-router.put('/perguntas/:id', perguntasController.uptadePergunta);
+router.put('/faqs/:id', faqController.updateFaq);
 
 // Rota para excluir uma pergunta por ID
-router.delete('/perguntas/:id', perguntasController.deletePergunta);
+router.delete('/faqs/:id', faqController.deleteFaq);
 
 module.exports = router;

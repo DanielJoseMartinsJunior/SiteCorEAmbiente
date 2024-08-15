@@ -1,0 +1,27 @@
+
+{{!-- edit.handlebars --}}
+
+{{!-- Seção de conteúdo da trabalho página --}}
+<div class="container mt-4 w-80">
+    <h1 class="mb-4">Editar Pergunta</h1>
+    <form id="editPerguntaForm" enctype="multipart/form-data" method="post">
+        <div class="form-group mb-3">
+            <label for="editTitulo">Título</label>
+            <input type="text" class="form-control" id="editTitulo" name="titulo" value="{{pergunta.titulo}}" required>
+        </div>
+         <div class="form-group mb-3">
+            <label for="editResposta">Resposta</label>
+            <input type="text" class="form-control" id="editPergunta" name="resposta" value="{{pergunta.resposta}}" required>
+        </div>
+        
+        <div class="form-group mb-2">
+                            <label for="createOrdem">Ordem</label>
+                            <input type="number" class="form-control" id="createOrdem" name="ordem" required>
+                        </div>
+       
+        <!-- Campo oculto para armazenar o ID da ergunta publicacao -->
+        <input type="hidden" id="editPerguntaId" name="id" value="{{pergunta.id}}">
+        <a href="../perguntas/" class="btn btn-secondary" id="cancelEditPergunta"><i class="bi bi-x-circle"></i> Cancelar</a>
+        <button type="button" class="btn btn-primary" id="saveEditPergunta" onclick="UpdatePerguntaClick(event)"><i class="bi bi-check-circle"></i> Salvar</button>
+    </form>
+</div>

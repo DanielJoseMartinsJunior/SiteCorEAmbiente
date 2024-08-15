@@ -7,6 +7,8 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 
 const bannerRoutes = require('./src/routes/bannerRoutes');
+const faqRoutes = require('./src/routes/faqRoutes');
+const perguntasRoutes = require('./src/routes/perguntasRoutes');
 const usuarioRoutes = require('./src/routes/usuarioRoutes');
 const produtoRoutes = require('./src/routes/produtoRoutes');
 const publicacaoRoutes = require('./src/routes/publicacaoRoutes');
@@ -141,6 +143,9 @@ app.use('/', produtoRoutes);
 app.use('/', publicacaoRoutes);
 app.use('/', trabalhoRoutes);
 app.use('/', depoimentoRoutes);
+app.use('/', sitePubliRoutes);
+//app.use('/', perguntasRoutes);
+app.use('/', faqRoutes);
 app.use('/', usuarioRoutes); 
 app.use('/', loginRoutes); 
 app.use('/', siteRoutes);
