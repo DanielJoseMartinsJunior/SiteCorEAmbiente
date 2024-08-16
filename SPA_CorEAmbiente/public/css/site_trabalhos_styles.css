@@ -628,8 +628,14 @@ footer p{
     border-radius: 8px; /* Bordas arredondadas, opcional */
 }
 
+.trabalhos-section h1 {
+    color: #222C34; /* Garante que o título também seja branco */
+    text-align: center;
+}
+
 .trabalhos-section h4 {
-    color: white; /* Garante que o título também seja branco */
+    color: #222C34; /* Garante que o título também seja branco */
+    text-align: center;
 }
 
 /* Estilo para o texto dentro do card */
