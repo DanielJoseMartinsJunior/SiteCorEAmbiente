@@ -36,7 +36,6 @@ body{
 
 section {
   margin-bottom: 3rem; /* Ajuste o valor conforme necessário */
- background-color: #FFFAEE;
 }
 
 .bg-primary, .btn-primary{
@@ -176,6 +175,6 @@ section {
 }
 
 .product-text h3 {
-  margin-top: 0; /* Remove a margem superior do h3, se necessário */
+  margin-top: 0; /* Remove a margem superior do h3, se necessário conteiner */ 
   margin-bottom: 1rem; /* Adiciona uma margem inferior para separar do texto */
 }
