@@ -5,6 +5,9 @@
   background-color:  rgba(0, 0, 0, 0.5);
 }
 
+body{
+  background-color: #FFFAEE;
+}
 /* definindo variáveis para cores */
 /* sobrescrevendo classes padrão do Bootstrap */
 /* a marcação !important dá um peso maior a regra, sobrescrevendo regras prévias */
@@ -63,4 +66,74 @@
 }
 .nav-link:hover{
   color: var(--warning) !important ; 
+}
+
+/* Estilização geral da seção */
+#perguntas {
+  background-color: #FFFAEE; /* Fundo da seção */
+  padding: 40px 0; /* Padding superior e inferior */
+}
+
+/* Título da seção */
+#perguntas h2 {
+  color: #2F4054; /* Cor do texto */
+  font-size: 2.5rem; /* Tamanho da fonte */
+  margin-bottom: 30px; /* Margem inferior */
+}
+
+/* Estilo do acordeão */
+.accordion-item {
+  border: 1px solid #B9862F; /* Borda dos itens do acordeão */
+  border-radius: 5px; /* Bordas arredondadas */
+  margin-bottom: 15px; /* Margem inferior entre os itens */
+}
+
+.accordion-header {
+  background-color: #B9862F; /* Fundo do cabeçalho do acordeão */
+}
+
+.accordion-button {
+  color: #FFFFFF ; /* Cor do texto do botão */
+  font-weight: bold; /* Texto em negrito */
+  background-color: transparent; /* Fundo transparente */
+  border: none; /* Sem borda */
+  padding: 15px; /* Padding interno */
+  text-align: left; /* Alinhamento do texto */
+}
+
+.accordion-button:focus {
+  box-shadow: none; /* Remove o foco padrão */
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #2F4054; /* Fundo quando expandido */
+  color: #FFFAEE; /* Cor do texto quando expandido */
+}
+
+.accordion-body {
+  background-color: #FFFFFF; /* Fundo do corpo do acordeão */
+  color: #2F4054; /* Cor do texto */
+  padding: 20px; /* Padding interno */
+}
+
+#sobre {
+  background-color: #FFFFFF; /* Fundo da seção sobre nós */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para efeito de profundidade */
+  padding: 20px; /* Espaçamento interno */
+}
+
+#produtos {
+  background-color: #FFFFFF; /* Fundo da seção de produtos */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para efeito de profundidade */
+  padding: 20px; /* Espaçamento interno */
+}
+
+.h3 {
+  color: #B9862F;
+}
+
+.text-center {
+  text-align: center; /* Centraliza o texto */
 }

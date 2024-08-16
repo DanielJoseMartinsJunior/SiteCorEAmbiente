@@ -57,24 +57,6 @@ exports.getAllDatas = async (req, res) => {
     res.status(500).json({ error: 'Erro ao buscar sites' });
   }
 };
-exports.getPublicacoesPage = async (req, res) => {
-  try {
-    console.log('Acessando a página de publicações...');
-    console.log('Caminho do arquivo site_publicacao.handlebars:', path.join(__dirname, '../views/site/site_publicacao.handlebars'));
-
-    // Faz uma solicitação GET para a API que fornece as publicacoes
-    const response = await api.get(`/publicacoes`);
-
-    // Obtenha os dados JSON da resposta
-    const publicacoes = response.data;
-
-    // Renderiza a página site/site_publicacao.handlebars e passa as publicacoes como contexto
-    res.render('site/site_publicacao', { publicacoes, layout: false });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Erro ao buscar publicacoes' });
-  }
-};
 
 exports.getPublicacoesPage = async (req, res) => {
   try {
@@ -94,6 +76,7 @@ exports.getPublicacoesPage = async (req, res) => {
     res.status(500).json({ error: 'Erro ao buscar publicacoes' });
   }
 };
+
 exports.getTrabalhosPage = async (req, res) => {
   try {
     console.log('Acessando a página de trabalhos...');
@@ -106,17 +89,17 @@ exports.getTrabalhosPage = async (req, res) => {
     const trabalhos = response.data;
 
     // Renderiza a página site/site_publicacao.handlebars e passa as publicacoes como contexto
-    res.render('site/site_trabalho', { trabalhos, layout: false });
+    res.render('site/site_trabalho', { trabalhos, layout: false,  });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Erro ao buscar trabalhos' });
   }
 };
 
-/* exports.getFaqsPage = async (req, res) => {
+ exports.getFaqsPage = async (req, res) => {
   try {
     console.log('Acessando a página de FAQs...');
-    console.log('Caminho do arquivo site_faq.handlebars:', path.join(__dirname, '../views/site/site_faq.handlebars'));
+    console.log('Caminho do arquivo site_faq.handlebars:', path.join(__dirname, '../views/site/site'));
 
     // Faz uma solicitação GET para a API que fornece as FAQs
     const response = await api.get(`/faqs`);
@@ -130,6 +113,38 @@ exports.getTrabalhosPage = async (req, res) => {
   }
 };
 
+exports.getProdutosPage = async (req, res) => {
+  try {
+    console.log('Acessando a página de produtos...');
+    console.log('Caminho do arquivo site_produtos.handlebars:', path.join(__dirname, '../views/site/site'));
+
+    // Faz uma solicitação GET para a API que fornece as FAQs
+    const response = await api.get(`/produtos`);
+    const produtos = response.data;
+
+    // Renderiza a página site/site_faq.handlebars e passa as FAQs como contexto
+    res.render('site/site_produto', { produtos, layout: false });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao buscar produtos' });
+  }
+};
+exports.getSobreNosPage = async (req, res) => {
+  try {
+    console.log('Acessando a página de sobre nós...');
+    console.log('Caminho do arquivo site_sobre_nos.handlebars:', path.join(__dirname, '../views/site/site'));
+
+    // Faz uma solicitação GET para a API que fornece as FAQs
+    //const response = await api.get(`/produtos`);
+    //const produtos = response.data;
+
+    // Renderiza a página site/site_faq.handlebars e passa as FAQs como contexto
+    res.render('site/site_sobre_nos', { layout: false });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao buscar produtos' });
+  }
+};
 
 /*exports.getTestesPage = async (req, res) => {
   try {

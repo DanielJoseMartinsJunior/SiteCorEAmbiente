@@ -306,7 +306,7 @@ footer a:hover {
     gap: 15px; /* Espaço entre os itens */
 }
 
-/* Estilo para cada bloco de rede social */
+/* Estilo para cada bloco de rede social nossosTrabalhos*/ 
 #facebook, #twitter, #instagram, #linkedin {
     display: flex;
     align-items: center; /* Alinha o ícone e o texto verticalmente */
@@ -570,10 +570,10 @@ footer p{
 /* Imagem principal do trabalho */
 .card img.rounded-start {
     width: 100%;
-    height: auto;
+    height: 10.px;
 }
 
-/* Imagens secundárias em linha */
+/* Imagens secundárias em linha padding: 10px;*/
 .secundarias {
     display: flex;
     gap: 10px;
@@ -621,49 +621,34 @@ footer p{
     padding: 2rem 1rem;
 }
 
-.secundarias {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    padding: 10px 0;
+.trabalhos-section {
+    background-color: #FFFAEE; /* Fundo preto */
+    color: white; /* Texto branco para contraste */
+    padding: 20px; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas, opcional */
 }
 
-.secundarias img {
-    height: 100px;
-    object-fit: cover;
-    border: 1px solid var(--cinza-claro);
-    cursor: pointer; /* Adiciona um cursor de ponteiro para indicar que é clicável */
+.trabalhos-section h4 {
+    color: white; /* Garante que o título também seja branco */
 }
 
-.carousel-inner img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+/* Estilo para o texto dentro do card */
+.trabalhos-section .card {
+    background-color: #333; /* Fundo escuro para os cards */
+    border: none; /* Remove borda do card */
+    color: white; /* Texto branco dentro do card */
 }
 
-/* Estilo para os controles do carrossel */
-.carousel-control-prev,
-.carousel-control-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    z-index: 2;
+.trabalhos-section .card h5 {
+    color: #ffffff; /* Cor diferente para o título do card, se desejar */
+    text-align: center; /* Centraliza o texto */
 }
 
-.carousel-control-prev {
-    left: 15px;
-}
-
-.carousel-control-next {
-    right: 15px;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    width: 20px;
-    height: 20px;
-    background-color: rgba(0, 0, 0, .5);
-    padding: 2rem 1rem;
+.imagem-principal {
+    width: 450px !important;
+    height: 300px !important;
+    object-fit: cover; /* Cobre o espaço sem distorcer a imagem */
+    border-radius: 12px; /* Bordas arredondadas, opcional */ 
+    display: block; /* Garante que a imagem seja tratada como um bloco */
+    padding: 10px; /* Adiciona um pequeno padding de 10px em todos os lados */
 }

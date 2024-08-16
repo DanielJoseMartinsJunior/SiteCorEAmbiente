@@ -1,5 +1,18 @@
 const url = "http://localhost:3000/";
 
+const exphbs = require('express-handlebars');
+
+const hbs = exphbs.create({
+    helpers: {
+        limitTo: (array, limit) => {
+            return array.slice(0, limit);
+        }
+    }
+});
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
 // Função auxiliar para validar o formato de e-mail
 function isValidEmail(email) {
     // Use uma expressão regular simples para validar o formato do e-mail
