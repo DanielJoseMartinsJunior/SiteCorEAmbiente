@@ -185,48 +185,48 @@
     </section>
 <!-- Nossos Trabalhos -->
 <section id="nossosTrabalhos" class="py-5 bg-dark text-light">
-        <div class="container">
-            <h2 class="text-center mb-4">Nossos Trabalhos</h2>
-            <div class="row">
-                {{#each trabalhos}}
-                <div class="col-md-4 mb-4">
-                    <div class="product-card position-relative">
-                        <img src="http://localhost:3000/img/trabalhos/{{imagem_principal}}" class="img-fluid" alt="Cortinas">
-                        <div class="product-info position-absolute">
-                            <h3>{{titulo}}</h3>
-                        </div>
+    <div class="container">
+        <h2 class="text-center mb-4">Nossos Trabalhos</h2>
+        <div class="row">
+            {{#each trabalhos}}
+            <div class="col-md-4 mb-4">
+                <div class="product-card position-relative">
+                    <img src="http://localhost:3000/img/trabalhos/{{imagem_principal}}" class="img-fluid" alt="Cortinas">
+                    <div class="product-info position-absolute">
+                        <h3>{{titulo}}</h3>
                     </div>
                 </div>
-                {{/each}}
             </div>
-            <div class="text-center">
+            {{/each}}
+        </div>
+        <div class="text-center">
             <a href="/lista-trabalhos" class="btn btn-outline-dark mt-4">Confira mais sobre nossos trabalhos 
-                <iclass="bi bi-arrow-right"></i>
+                <i class="bi bi-arrow-right"></i>
             </a>
-            </div>
         </div>
-    </section>
-    <!-- publicações -->
+    </div>
+</section>
+
 <section id="publicacoes" class="py-5 bg-dark text-light">
-        <div class="container">
-            <h2 class="text-center mb-4">Postagens mais recentes!</h2>
-            <div class="row">
-                {{#each publicacoes}}
-                <div class="col-md-4 mb-4">
-                    <div class="product-card position-relative">
-                        <img src="http://localhost:3000/img/publicacoes/{{imagem_principal}}" class="img-fluid">
-                        <div class="product-info position-absolute">
-                            <h3>{{titulo}}</h3>
-                        </div>
+    <div class="container">
+        <h2 class="text-center mb-4">Postagens mais recentes!</h2>
+        <div class="row">
+            {{#each publicacoes}}
+            <div class="col-md-4 mb-4">
+                <div class="product-card position-relative">
+                    <img src="http://localhost:3000/img/publicacoes/{{imagem_principal}}" class="img-fluid">
+                    <div class="product-info position-absolute">
+                        <h3>{{titulo}}</h3>
                     </div>
-                    <div class="card-body">
-                            <a href="/lista-publicacoes" class="btn btn-primary">Leia Mais</a>
-                        </div>
                 </div>
-                {{/each}}
+                <div class="card-body">
+                    <a href="/lista-publicacoes" class="btn btn-primary">Leia Mais</a>
+                </div>
             </div>
+            {{/each}}
         </div>
-    </section>
+    </div>
+</section>
     <!-- Contato -->
     <section id="contato" class="py-5">
         <div class="container">

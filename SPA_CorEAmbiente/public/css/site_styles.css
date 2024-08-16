@@ -444,9 +444,9 @@ footer p{
 }
 
 .product-card img {
-    width: 100%;
-    height: auto;
-    transition: transform 0.3s ease;
+    width: 100%; /* Faz com que a imagem ocupe toda a largura do contêiner */
+    height: 350px; /* Altura fixa, ajuste conforme necessário */
+    object-fit: cover; /* Mantém a proporção da imagem, cortando o excesso se necessário */
 }
 
 .product-card:hover img {
