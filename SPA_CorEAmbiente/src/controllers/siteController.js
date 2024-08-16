@@ -57,11 +57,18 @@ exports.getAllDatas = async (req, res) => {
     res.status(500).json({ error: 'Erro ao buscar sites' });
   }
 };
+<<<<<<< HEAD
 
 exports.getPublicacoesPage = async (req, res) => {
   try {
     console.log('Acessando a página de publicações...');
     console.log('Caminho do arquivo site_publicacao.handlebars:', path.join(__dirname, '../views/site/site_publicacao.handlebars'));
+=======
+exports.getPublicacoesPage = async (req, res) => {
+  try {
+    console.log('Acessando a página de publicações...');
+    console.log('Caminho do arquivo site_publicacoes.handlebars:', path.join(__dirname, '../views/site/site_publicacoes.handlebars'));
+>>>>>>> 88bdc3dfbf524ac657372571dad503fac4a1ba87
 
     // Faz uma solicitação GET para a API que fornece as publicacoes
     const response = await api.get(`/publicacoes`);
@@ -70,7 +77,11 @@ exports.getPublicacoesPage = async (req, res) => {
     const publicacoes = response.data;
 
     // Renderiza a página site/site_publicacao.handlebars e passa as publicacoes como contexto
+<<<<<<< HEAD
     res.render('site/site_publicacao', { publicacoes, layout: false });
+=======
+    res.render('site/site_publicacoes', { publicacoes, layout: false });
+>>>>>>> 88bdc3dfbf524ac657372571dad503fac4a1ba87
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Erro ao buscar publicacoes' });
@@ -96,7 +107,32 @@ exports.getTrabalhosPage = async (req, res) => {
   }
 };
 
+<<<<<<< HEAD
  exports.getFaqsPage = async (req, res) => {
+=======
+// Método para acessar a página de produtos
+exports.getProdutosPage = async (req, res) => {
+  try {
+    console.log('Acessando a página de produtos...');
+    console.log('Caminho do arquivo site_produtos.handlebars:', path.join(__dirname, '../views/site/site_produtos.handlebars'));
+
+    // Faz uma solicitação GET para a API que fornece os produtos
+    const response = await api.get(`/produtos`);
+
+    // Obtenha os dados JSON da resposta
+    const produtos = response.data;
+
+    // Renderiza a página site/site_produto.handlebars e passa os produtos como contexto
+    res.render('site/site_produtos', { produtos, layout: false });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao buscar produtos' });
+  }
+};
+
+
+/* exports.getFaqsPage = async (req, res) => {
+>>>>>>> 88bdc3dfbf524ac657372571dad503fac4a1ba87
   try {
     console.log('Acessando a página de FAQs...');
     console.log('Caminho do arquivo site_faq.handlebars:', path.join(__dirname, '../views/site/site'));

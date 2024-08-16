@@ -7,7 +7,7 @@ const { Op } = require('sequelize');
 // Método para criar uma nova notícia
 exports.createProduto = async (req, res) => {
   try {
-    const { titulo } = req.body;
+    const { titulo, descricao } = req.body;
     const imagem_principal = req.files['imagem_principal'][0].filename;
     let imagens_internas = '';
     
@@ -15,7 +15,7 @@ exports.createProduto = async (req, res) => {
       imagens_internas = req.files['imagens_internas'].map((file) => file.filename);
     }
 
-    const produto = await Produto.create({ titulo, imagem_principal, imagens_internas: JSON.stringify(imagens_internas) });
+    const produto = await Produto.create({ titulo, descricao, imagem_principal, imagens_internas: JSON.stringify(imagens_internas) });
     res.status(201).json(produto);
   } catch (error) {
     console.error(error);
@@ -75,7 +75,7 @@ exports.searchProdutosByTitle = async (req, res) => {
 exports.updateProduto = async (req, res) => {
   const { id } = req.params;
   try {
-    const { titulo } = req.body;
+    const { titulo, descricao } = req.body;
     const imagem_principal = req.files['imagem_principal'][0].filename;
     let imagens_internas = '';
     
@@ -83,7 +83,7 @@ exports.updateProduto = async (req, res) => {
       imagens_internas = req.files['imagens_internas'].map((file) => file.filename);
     }
 
-    const [updated] = await Produto.update({ titulo, imagem_principal, imagens_internas: JSON.stringify(imagens_internas) }, {
+    const [updated] = await Produto.update({ titulo, descricao, imagem_principal, imagens_internas: JSON.stringify(imagens_internas) }, {
       where: { id },
     });
     if (updated) {

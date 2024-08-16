@@ -29,7 +29,11 @@
             </div>
             <div id="nav-pages">
                 <ul id="nav-list">
+<<<<<<< HEAD
                     <li class="nav-item active">
+=======
+                    <li class="nav-item ">
+>>>>>>> 88bdc3dfbf524ac657372571dad503fac4a1ba87
                         <a href="/">Início</a>
                     </li>
                     <li class="nav-item dropdown">
@@ -46,10 +50,17 @@
                             </li>
                         </ul>
                     </li>
+<<<<<<< HEAD
                     <li class="nav-item">
                         <a href="/lista-trabalhos">Nossos Trabalhos</a>
                     </li>
                     <li class="nav-item">
+=======
+                    <li class="nav-item active">
+                        <a href="/lista-trabalhos">Nossos Trabalhos</a>
+                    </li>
+                    <li class="nav-item ">
+>>>>>>> 88bdc3dfbf524ac657372571dad503fac4a1ba87
                         <a href="/lista-publicacoes">Publicações</a>
                     </li>
                     <li class="nav-item">
@@ -71,6 +82,10 @@
             <button id="mobile-btn">
 				<i class="fa-solid fa-bars"></i>
 			</button>
+        </nav>
+            <button id="mobile-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </nav>
         <div id="mobile-menu">
             <ul id="mobile-nav-list">
@@ -104,6 +119,7 @@
             </ul>
         </div>
     </header>
+<<<<<<< HEAD
 <body>
     <section class="container">
        <div  class="col-md-8 mx-auto trabalhos-section" id="trabalhos">
@@ -119,6 +135,42 @@
                 <div class="p-3">
                     <h5>{{titulo}}</h5>
                     <p>{{descricao}}</p>
+=======
+
+    <main class="container">
+        <div class="col-md-8 mx-auto" id="trabalhos">
+            <h4>Trabalhos</h4>
+            {{#each trabalhos}}
+            <hr>
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img src="http://localhost:3000/img/trabalhos/{{imagem_principal}}" class="img-fluid rounded-start" alt="{{titulo}}">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="p-3">
+                            <h5>{{titulo}}</h5>
+                            <div id="banner-imagens-{{@index}}" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    {{#each imagens_internas}}
+                                        <div class="carousel-item {{#if @first}}active{{/if}}">
+                                            <img src="http://localhost:3000/img/trabalhos/{{this}}" class="d-block w-100 img-thumbnail" alt="Imagem interna" data-bs-toggle="modal" data-bs-target="#modalImagem-{{@../index}}-{{@index}}">
+                                        </div>
+                                    {{/each}}
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#banner-imagens-{{@index}}" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#banner-imagens-{{@index}}" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                            <p>{{descricao}}</p>
+                        </div>
+                    </div>
+>>>>>>> 88bdc3dfbf524ac657372571dad503fac4a1ba87
                 </div>
             </div>
         </div>

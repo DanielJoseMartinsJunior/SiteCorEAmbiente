@@ -2,27 +2,40 @@
 
 {{!-- Seção de conteúdo da página --}}
 <div class="container mt-4 w-80">
-    <h1 class="mb-4">Editar Notícia</h1>
+    <h1 class="mb-4">Editar Produto</h1>
     <form id="editProdutoForm" enctype="multipart/form-data" method="post">
         <div class="form-group mb-3">
             <label for="editTitulo">Título</label>
-            <input type="text" class="form-control" id="editTitulo" name="titulo" value="{{noticia.titulo}}" required>
+            <input type="text" class="form-control" id="editTitulo" name="titulo" value="{{produto.titulo}}" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="editDescricao">Descrição</label>
+            <textarea class="form-control" id="editDescricao" name="descricao" rows="4" required>{{produto.descricao}}</textarea>
         </div>
         <div class="form-group mb-3">
             <label for="editImagemPrincipal">Imagem Principal</label>
-            <input type="file" class="form-control-file" id="editImagemPrincipal" name="imagem_principal" required>
+            <input type="file" class="form-control-file" id="editImagemPrincipal" name="imagem_principal">
+            <small class="form-text text-muted">Deixe em branco para manter a imagem atual.</small>
+            <!-- Preview of current main image -->
+            <img src="http://localhost:3000/img/produtos/{{produto.imagem_principal}}" class="img-thumbnail mt-2" alt="Imagem Principal">
         </div>
         <div class="form-group mb-3">
             <label for="editImagensInternas">Imagens Internas</label>
             <input type="file" class="form-control-file" id="editImagensInternas" name="imagens_internas" multiple>
+            <small class="form-text text-muted">Deixe em branco para manter as imagens atuais.</small>
+            <!-- Previews of current internal images -->
+            <div class="mt-2">
+                {{#each produto.imagens_internas}}
+                <img src="http://localhost:3000/img/produtos/{{this}}" class="img-thumbnail mr-2 mb-2" alt="Imagem Interna" style="max-width: 150px;">
+                {{/each}}
+            </div>
         </div>
-        <!-- Campo oculto para armazenar o ID do noticia -->
+        <!-- Campo oculto para armazenar o ID do produto -->
         <input type="hidden" id="editProdutoId" name="id" value="{{produto.id}}">
-        <a  href="../produtos/" class="btn btn-secondary" id="cancelEditProduto"><i class="bi bi-x-circle"></i> Cancelar</a>
-        <button  type="button" class="btn btn-primary" id="saveEditProduto" onclick="UpdateProdutoClick(event)"><i class="bi bi-check-circle"></i> Salvar</button>
+        <a href="../produtos/" class="btn btn-secondary" id="cancelEditProduto"><i class="bi bi-x-circle"></i> Cancelar</a>
+        <button type="button" class="btn btn-primary" id="saveEditProduto" onclick="UpdateProdutoClick(event)"><i class="bi bi-check-circle"></i> Salvar</button>
     </form>
 </div>
 
-
-<!-- Scripts do formulário noticia -->
-<script src="../js/produtoScripts.js"></script> 
+<!-- Scripts do formulário produto -->
+<script src="../js/produtoScripts.js"></script>

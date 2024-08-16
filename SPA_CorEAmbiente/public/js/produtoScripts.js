@@ -1,13 +1,12 @@
 const url = "http://localhost:3000/";
 
-
-///     FUNÇÕES DO CADASTRO DE NOTICIAS  ///
-// Função para confirmar a exclusão do noticia
+///     FUNÇÕES DO CADASTRO DE PRODUTOS  ///
+// Função para confirmar a exclusão do produto
 function confirmDeleteProduto(id) {
-    //busca o token armazenado no login
+    // Busca o token armazenado no login
     const token = localStorage.getItem('token');
 
-    // Configurar o cabeçalho com a autorizção do token
+    // Configurar o cabeçalho com a autorização do token
     const config = {
         headers: {
             'Authorization': `Bearer ${token}`
@@ -24,7 +23,7 @@ function confirmDeleteProduto(id) {
 
             Swal.fire({
                 icon: 'success',
-                title: 'Notícia excluída com sucesso',
+                title: 'Produto excluído com sucesso',
                 showConfirmButton: false,
                 timer: 1500
             }).then(() => {
@@ -33,12 +32,10 @@ function confirmDeleteProduto(id) {
             });
         })
         .catch(error => {
-            console.error(error);
+            console.error('Erro ao excluir produto:', error);
             // Lida com erros, se necessário
         });
 }
-
-
 
 // Função de validação do formulário
 function validateForm(formData) {
@@ -70,37 +67,36 @@ function validateForm(formData) {
     return true; // Todos os campos estão preenchidos corretamente
 }
 
-
 // Evento quando o botão "Salvar" do formulário de edição é clicado
 function UpdateProdutoClick(event) {
-
     event.preventDefault(); // Evita o envio padrão do formulário
 
     // Obter os dados do formulário de edição
     const formData = new FormData(document.querySelector('#editProdutoForm'));
 
-    // Obter o ID do noticia a ser editado
+    // Obter o ID do produto a ser editado
     const produtoId = document.querySelector('#editProdutoId').value;
 
     // Chama a função de validação antes de enviar a solicitação PUT
     if (validateForm(formData)) {
-        //busca o token armazenado no login
+        // Busca o token armazenado no login
         const token = localStorage.getItem('token');
 
-        // Configurar o cabeçalho com a autorizção do token
+        // Configurar o cabeçalho com a autorização do token
         const config = {
             headers: {
                 'Authorization': `Bearer ${token}`
             },
         };
-        // Fazer uma solicitação PUT para atualizar o noticia
+
+        // Fazer uma solicitação PUT para atualizar o produto
         axios.put(`${url}api/produtos/${produtoId}`, formData, config)
             .then(response => {
                 console.log(response.data);
 
                 Swal.fire({
                     icon: 'success',
-                    title: 'Produto alterada com sucesso',
+                    title: 'Produto alterado com sucesso',
                     showConfirmButton: false,
                     timer: 1500
                 }).then(() => {
@@ -109,51 +105,49 @@ function UpdateProdutoClick(event) {
                 });
             })
             .catch(error => {
-                console.error(error);
+                console.error('Erro ao atualizar produto:', error);
                 // Lida com erros, se necessário
             });
-
     }
-};
+}
 
-
-// Evento quando o botão "Salvar" do formulário de edição é clicado
+// Evento quando o botão "Salvar" do formulário de criação é clicado
 function CreateProdutoClick(event) {
-
     event.preventDefault(); // Evita o envio padrão do formulário
 
-    // Obter os dados do formulário de edição
+    // Obter os dados do formulário de criação
     const formData = new FormData(document.querySelector('#createProdutoForm'));
-
 
     // Chama a função de validação antes de enviar a solicitação POST
     if (validateForm(formData)) {
-        //busca o token armazenado no login
+        // Busca o token armazenado no login
         const token = localStorage.getItem('token');
 
-        // Configurar o cabeçalho com a autorizção do token
+        // Configurar o cabeçalho com a autorização do token
         const config = {
             headers: {
                 'Authorization': `Bearer ${token}`
             },
         };
-        // Fazer uma solicitação POST para criar o noticia
+
+        // Fazer uma solicitação POST para criar o produto
         axios.post(`${url}api/produtos/`, formData, config)
             .then(response => {
                 console.log(response.data);
+
                 Swal.fire({
                     icon: 'success',
                     title: 'Produto criado com sucesso',
                     showConfirmButton: false,
                     timer: 1500
                 }).then(() => {
-                    // Após o tempo definido (1500 ms), redirecione para a página noticias
+                    // Após o tempo definido (1500 ms), redirecione para a página desejada
                     window.location.href = `../produtos/`;
                 });
             })
             .catch(error => {
-                console.error(error);
+                console.error('Erro ao criar produto:', error);
                 // Lida com erros, se necessário
             });
     }
-};
+}

@@ -1,6 +1,3 @@
-{{!-- create.handlebars --}}
-
-{{!-- Seção de conteúdo da página --}}
 <div class="container mt-4 w-80">
     <h1 class="mb-4">Criar Publicação</h1>
     <form id="createPublicacaoForm" enctype="multipart/form-data" method="post">
@@ -17,11 +14,13 @@
         <div class="form-group mb-3">
             <label for="createImagemPrincipal">Imagem Principal</label>
             <input type="file" class="form-control-file" id="createImagemPrincipal" name="imagem_principal" required>
+            <small class="form-text text-muted">Formatos aceitos: jpg, jpeg, png, gif.</small>
         </div>
 
         <div class="form-group mb-3">
             <label for="createImagensInternas">Imagens Internas</label>
             <input type="file" class="form-control-file" id="createImagensInternas" name="imagens_internas" multiple>
+            <small class="form-text text-muted">Formatos aceitos: jpg, jpeg, png, gif. Você pode selecionar várias imagens.</small>
         </div>
 
         <a href="../publicacoes/" class="btn btn-secondary" id="cancelCreatePublicacao"><i class="bi bi-x-circle"></i> Cancelar</a>

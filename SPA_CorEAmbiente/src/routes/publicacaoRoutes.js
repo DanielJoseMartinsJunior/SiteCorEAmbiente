@@ -13,4 +13,5 @@ router.get('/publicacoesCreate/',checkSession, publicacaoController.createPublic
 router.post('/publicacoesSearch/',checkSession, publicacaoController.searchPublicacoesByTitle);
 router.get('/publicacoes/:id',checkSession, publicacaoController.editPublicacao);
 
+
 module.exports = router;

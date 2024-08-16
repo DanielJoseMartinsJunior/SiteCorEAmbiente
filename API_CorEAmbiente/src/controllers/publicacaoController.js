@@ -4,19 +4,30 @@ const { Op } = require('sequelize');
 // Método para criar uma nova publicação
 exports.createPublicacao = async (req, res) => {
   try {
-    const { titulo, conteudo } = req.body;  // New text field 'conteudo'
-    const imagem_principal = req.files['imagem_principal'][0].filename;
+    const { titulo, conteudo } = req.body;
+    const files = req.files;
+
+    // Adicione os logs para verificar se os arquivos foram carregados corretamente
+    console.log('Imagem Principal:', files['imagem_principal']);
+    console.log('Imagens Internas:', files['imagens_internas']);
+
+
+    if (!files || !files['imagem_principal']) {
+      return res.status(400).json({ error: 'Imagem principal é obrigatória.' });
+    }
+
+    const imagem_principal = files['imagem_principal'][0].filename;
     let imagens_internas = '';
 
-    if (req.files['imagens_internas']) {
-      imagens_internas = req.files['imagens_internas'].map((file) => file.filename);
+    if (files['imagens_internas']) {
+      imagens_internas = files['imagens_internas'].map((file) => file.filename);
     }
 
     const publicacao = await Publicacao.create({
       titulo,
-      conteudo,  // Save content text
+      conteudo,
       imagem_principal,
-      imagens_internas: JSON.stringify(imagens_internas) // Store images as JSON string
+      imagens_internas: JSON.stringify(imagens_internas) // Armazenando como JSON
     });
 
     res.status(201).json(publicacao);
@@ -73,35 +84,39 @@ exports.searchPublicacoesByTitle = async (req, res) => {
   }
 };
 
-// Método para atualizar uma publicação por ID
-// Método para atualizar uma publicação por ID
+// Método para atualizar uma publicação
+// Método para atualizar uma publicação
 exports.updatePublicacao = async (req, res) => {
   const { id } = req.params;
   try {
     const { titulo, conteudo } = req.body;
-    
-    // Handle imagem_principal upload
-    let imagem_principal = null;
-    if (req.files && req.files['imagem_principal'] && req.files['imagem_principal'][0]) {
-      imagem_principal = req.files['imagem_principal'][0].filename;
-    }
-
-    // Handle imagens_internas upload
+    let imagem_principal = req.files['imagem_principal'] ? req.files['imagem_principal'][0].filename : null;
     let imagens_internas = [];
-    if (req.files && req.files['imagens_internas']) {
+
+    // Verificar se os arquivos foram carregados corretamente
+    console.log('Imagem Principal (atualização):', req.files['imagem_principal']);
+    console.log('Imagens Internas (atualização):', req.files['imagens_internas']);
+
+    if (req.files['imagens_internas']) {
       imagens_internas = req.files['imagens_internas'].map(file => file.filename);
     }
 
-    const updateData = { titulo, conteudo };
-    if (imagem_principal) {
-      updateData.imagem_principal = imagem_principal;
-    }
-    if (imagens_internas.length > 0) {
-      updateData.imagens_internas = JSON.stringify(imagens_internas);
+    const publicacao = await Publicacao.findByPk(id);
+    if (!publicacao) {
+      return res.status(404).json({ error: 'Publicação não encontrada' });
     }
 
-    const [updated] = await Publicacao.update(updateData, {
-      where: { id },
+    if (!imagem_principal) {
+      imagem_principal = publicacao.imagem_principal;
+    }
+
+    const [updated] = await Publicacao.update({
+      titulo,
+      conteudo,
+      imagem_principal,
+      imagens_internas: JSON.stringify(imagens_internas.length > 0 ? imagens_internas : JSON.parse(publicacao.imagens_internas))
+    }, {
+      where: { id }
     });
 
     if (updated) {
@@ -111,8 +126,8 @@ exports.updatePublicacao = async (req, res) => {
       res.status(404).json({ error: 'Publicação não encontrada' });
     }
   } catch (error) {
-    console.error('Erro ao atualizar a publicação:', error);
-    res.status(500).json({ error: 'Erro ao atualizar a publicação. Verifique os dados enviados e tente novamente.' });
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao atualizar a publicacao' });
   }
 };
 
