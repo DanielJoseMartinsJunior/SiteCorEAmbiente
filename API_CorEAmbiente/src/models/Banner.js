@@ -8,14 +8,6 @@ const Banner = sequelize.define('Banner', {
     type: DataTypes.STRING(100),
     allowNull: false,
   },
-  descricao: {
-    type: DataTypes.STRING(255),
-    allowNull: false,
-  },
-  link: {
-    type: DataTypes.STRING(255),
-    allowNull: false,
-  },
   imagem: {
     type: DataTypes.STRING(255),
     allowNull: false,

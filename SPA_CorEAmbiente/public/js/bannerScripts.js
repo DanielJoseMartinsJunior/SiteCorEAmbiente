@@ -66,8 +66,6 @@ document.querySelector('#editBannerModal').addEventListener('show.bs.modal', fun
 
             // Preencher o formulário com os dados do banner
             document.querySelector('#editTitulo').value = bannerData.titulo;
-            document.querySelector('#editDescricao').value = bannerData.descricao;
-            document.querySelector('#editLink').value = bannerData.link;
             document.querySelector('#editOrdem').value = bannerData.ordem;
             document.querySelector('#editImagem').value = '';
             // Preencha os outros campos do banner conforme necessário
@@ -85,12 +83,10 @@ document.querySelector('#editBannerModal').addEventListener('show.bs.modal', fun
     // Função de validação do formulário
     function validateForm(formData) {
         const titulo = formData.get('titulo');
-        const descricao = formData.get('descricao');
         const imagem = formData.get('imagem');
-        const link = formData.get('link');
         const ordem = formData.get('ordem');
 
-        if (!titulo || !descricao || !imagem || !link || !ordem) {
+        if (!titulo || !imagem || !ordem) {
             // Exibir mensagem de erro para o usuário
             Swal.fire({
                 icon: 'error',
@@ -167,11 +163,9 @@ document.querySelector('#saveEditBanner').addEventListener('click', function () 
 
             // Atualize os elementos HTML dentro do card com os novos dados
             const tituloElement = cardElement.querySelector('.card-title');
-            const descricaoElement = cardElement.querySelector('.card-text');
             const imagemElement = cardElement.querySelector('.card-img-top');
 
             tituloElement.textContent = response.data.titulo;
-            descricaoElement.textContent = response.data.descricao;
             imagemElement.src = `${url}img/banners/${response.data.imagem}`;
 
         })
@@ -244,7 +238,6 @@ function createBannerCard(bannerData) {
             <img src="${url}img/banners/${bannerData.imagem}" class="card-img-top" alt="${bannerData.titulo}">
             <div class="card-body d-flex flex-column">
                 <h5 class="card-title">${bannerData.titulo}</h5>
-                <p class="card-text">${bannerData.descricao}</p>
                 <div class="d-flex mt-auto justify-content-between">
                     <!-- Link de Edição -->
                     <button class="btn btn-secondary"  data-bs-toggle="modal" data-bs-target="#editBannerModal" data-id="${bannerData.id}"><i class="bi bi-pencil"></i> Editar</button>

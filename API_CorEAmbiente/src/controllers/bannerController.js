@@ -8,10 +8,9 @@ const { Op } = require('sequelize');
 // Método para criar um novo banner
 exports.createBanner =  async (req, res) => {
   try {
-    const { titulo, descricao, link, ordem } = req.body;
+    const { titulo, ordem } = req.body;
     const imagem = req.file.filename; // Obtém o nome do arquivo enviado
-
-    const banner = await Banner.create({ titulo, descricao, link, imagem, ordem }); // Defina a ordem conforme necessário
+    const banner = await Banner.create({ titulo, imagem, ordem }); // Defina a ordem conforme necessário
     res.status(201).json(banner);
   } catch (error) {
     console.error(error);
@@ -74,10 +73,10 @@ exports.searchBannersByTitle = async (req, res) => {
 exports.updateBanner = async (req, res) => {
     const { id } = req.params;
     try {
-      const { titulo, descricao, link, ordem } = req.body;
+      const { titulo, ordem } = req.body;
       const imagem = req.file.filename; // Obtém o nome do arquivo enviado
   
-      const [updated] = await Banner.update({ titulo, descricao, link, imagem, ordem }, {
+      const [updated] = await Banner.update({ titulo, imagem, ordem }, {
         where: { id },
       });
       if (updated) {
