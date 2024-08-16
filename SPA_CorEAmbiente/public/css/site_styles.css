@@ -18,6 +18,9 @@
     margin: 0;
 }
 
+section {
+    margin-bottom: 3rem; /* Ajuste o valor conforme necessário */
+}
 /*Menu*/
 
 .nav-link {
