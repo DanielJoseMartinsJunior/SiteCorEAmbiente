@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
     <!-- CSS personalizado -->
@@ -52,7 +54,7 @@
             </ul>
         </div>
     </header>
-    
+
 
     <main class="container mt-5">
         <h1 class="mb-4 text-center">Produtos</h1>
@@ -65,19 +67,23 @@
                             <div id="carousel-{{@index}}" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img src="http://localhost:3000/img/produtos/{{imagem_principal}}" class="d-block w-100 img-thumbnail" alt="{{titulo}}">
+                                        <img src="http://localhost:3000/img/produtos/{{imagem_principal}}"
+                                            class="d-block w-100 img-thumbnail" alt="{{titulo}}">
                                     </div>
                                     {{#each imagens_internas}}
                                     <div class="carousel-item">
-                                        <img src="http://localhost:3000/img/produtos/{{this}}" class="d-block w-100 img-thumbnail" alt="Imagem interna">
+                                        <img src="http://localhost:3000/img/produtos/{{this}}"
+                                            class="d-block w-100 img-thumbnail" alt="Imagem interna">
                                     </div>
                                     {{/each}}
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carousel-{{@../index}}" data-bs-slide="prev">
+                                <button class="carousel-control-prev" type="button"
+                                    data-bs-target="#carousel-{{@../index}}" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carousel-{{@../index}}" data-bs-slide="next">
+                                <button class="carousel-control-next" type="button"
+                                    data-bs-target="#carousel-{{@../index}}" data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
                                 </button>
@@ -95,6 +101,11 @@
             {{/each}}
         </div>
     </main>
+
+    <a href="https://l.instagram.com/?u=https%3A%2F%2Fwa.me%2Fmessage%2F2PIHSXCOBYCJL1&e=AT0LIS0NSY1ajylKPuuxmC2jDGMHsNdSugGNF9L-GP6EpTilLCIIHl2_VppU7rjNjvr0r2ZG2ej8QWW4_QQj7x2AWqGtS3lcmtsro29tLw7ycAdVzYGGpg"
+        target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp whatsapp-icon"></i>
+    </a>
 
     <!-- Footer -->
     <footer class="text-center text-lg-start bg-dark text-light mt-5">

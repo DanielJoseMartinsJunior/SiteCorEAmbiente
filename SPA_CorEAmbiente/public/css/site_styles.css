@@ -122,15 +122,6 @@ section {
 
 
 
-/*Notícias*/
-#produtoss a{
-    color: var(--azul);;
-    text-decoration : none;
-}
-
-#produtos a:hover{
-    color: var(--verde);;
-}
 
 /*Eventos*/
 #servicos{
@@ -269,6 +260,7 @@ body {
     flex-direction: column; /* Alinha os itens verticalmente */
     align-items: right; /* Centraliza os itens horizontalmente */
     gap: 15px; /* Espaço entre os itens */
+    color:rgba(0, 0, 0, 0.7)
 }
 
 /* Estilo para cada bloco de contato */
@@ -329,6 +321,14 @@ footer a:hover {
 #facebook p, #twitter p, #instagram p, #linkedin p {
     margin: 0; /* Remove margem padrão dos parágrafos */
     font-size: 16px; /* Tamanho da fonte */
+}
+
+#formSendMessage .form-label,
+#formSendMessage input,
+#formSendMessage textarea,
+.col-md-6 h4,
+.col-md-6 p {
+    color: #000; /* Set color to black */
 }
 
 /* Estilo adicional opcional */
@@ -447,6 +447,7 @@ footer p{
     width: 100%; /* Faz com que a imagem ocupe toda a largura do contêiner */
     height: 350px; /* Altura fixa, ajuste conforme necessário */
     object-fit: cover; /* Mantém a proporção da imagem, cortando o excesso se necessário */
+    transition: transform 0.3s ease;
 }
 
 .product-card:hover img {
@@ -625,3 +626,28 @@ footer p{
 }
 
 
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 40px;
+    box-shadow: 2px 2px 3px #313131;
+    z-index: 100;
+}
+
+.whatsapp-float:hover {
+    background-color: #128c7e;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.whatsapp-icon {
+    margin-top: 7px;
+}
