@@ -8,6 +8,7 @@ const sitePublicacaoController = require('../controllers/sitePublicacaoControlle
 //router.get('/lista-faqs', siteController.getFaqsPage);
 router.get('/lista-trabalhos', siteController.getTrabalhosPage);
 router.get('/lista-publicacoes', siteController.getPublicacoesPage);
+router.get('/lista-produtos', siteController.getProdutosPage);
 router.get('/', siteController.getAllDatas);
 
 // Route to display all publications

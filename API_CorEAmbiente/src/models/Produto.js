@@ -8,6 +8,10 @@ const Produto = sequelize.define('Produto', {
     type: DataTypes.STRING(100),
     allowNull: false,
   },
+  descricao: {
+    type: DataTypes.TEXT, // Campo para armazenar o conteúdo da publicação
+    allowNull: false,
+  },
   imagem_principal: {
     type: DataTypes.STRING(255),
     allowNull: false,

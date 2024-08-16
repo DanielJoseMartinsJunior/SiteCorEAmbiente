@@ -94,6 +94,27 @@ exports.getTrabalhosPage = async (req, res) => {
   }
 };
 
+// Método para acessar a página de produtos
+exports.getProdutosPage = async (req, res) => {
+  try {
+    console.log('Acessando a página de produtos...');
+    console.log('Caminho do arquivo site_produtos.handlebars:', path.join(__dirname, '../views/site/site_produtos.handlebars'));
+
+    // Faz uma solicitação GET para a API que fornece os produtos
+    const response = await api.get(`/produtos`);
+
+    // Obtenha os dados JSON da resposta
+    const produtos = response.data;
+
+    // Renderiza a página site/site_produto.handlebars e passa os produtos como contexto
+    res.render('site/site_produtos', { produtos, layout: false });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao buscar produtos' });
+  }
+};
+
+
 /* exports.getFaqsPage = async (req, res) => {
   try {
     console.log('Acessando a página de FAQs...');

@@ -6,7 +6,11 @@
     <form id="createProdutoForm" enctype="multipart/form-data" method="post">
         <div class="form-group mb-3">
             <label for="createTitulo">Título</label>
-            <input type="text" class="form-control" id="createTitulo" name="titulo" value="{{produto.titulo}}" required>
+            <input type="text" class="form-control" id="createTitulo" name="titulo" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="createDescricao">Descrição</label>
+            <textarea class="form-control" id="createDescricao" name="descricao" rows="4" required></textarea>
         </div>
         <div class="form-group mb-3">
             <label for="createImagemPrincipal">Imagem Principal</label>
@@ -16,11 +20,9 @@
             <label for="createImagensInternas">Imagens Internas</label>
             <input type="file" class="form-control-file" id="createImagensInternas" name="imagens_internas" multiple>
         </div>
-        <!-- Campo oculto para armazenar o ID do noticia -->
-        <input type="hidden" id="createProdutoId" name="id" value="{{produto.id}}">
-        <a  href="../produtos/" class="btn btn-secondary" id="cancelCreateProduto"><i class="bi bi-x-circle"></i> Cancelar</a>
-        <button  type="button" class="btn btn-primary" id="saveCreateProduto" onclick="CreateProdutoClick(event)"><i class="bi bi-check-circle"></i> Salvar</button>
+        <a href="../produtos/" class="btn btn-secondary" id="cancelCreateProduto"><i class="bi bi-x-circle"></i> Cancelar</a>
+        <button type="button" class="btn btn-primary" id="saveCreateProduto" onclick="CreateProdutoClick(event)"><i class="bi bi-check-circle"></i> Salvar</button>
     </form>
 </div>
-<!-- Scripts do formulário noticia -->
-<script src="../js/produtoScripts.js"></script> 
+<!-- Scripts do formulário produto -->
+<script src="../js/produtoScripts.js"></script>

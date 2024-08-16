@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/header.css">
     <!-- Favicon -->
     <link rel="shortcut icon" href="../img/favicon.png">
-    <title>Publicações - Cor e Ambiente</title>
+    <title>Produtos - Cor e Ambiente</title>
 </head>
 
 <body>
@@ -37,15 +37,8 @@
                         </ul>
                     </li>
                     <li class="nav-item"><a href="/lista-trabalhos">Nossos Trabalhos</a></li>
-                    <li class="nav-item active"><a href="/lista-publicacoes">Publicações</a></li>
+                    <li class="nav-item"><a href="/lista-publicacoes">Publicações</a></li>
                     <li class="nav-item"><a href="#contact">Contato</a></li>
-                    <li class="nav-item dropdown">
-                        <a href="#contact">Mais</a>
-                        <ul class="dropdown-menu">
-                            <li class="nav-item"><a href="#about">Sobre Nós</a></li>
-                            <li class="nav-item"><a href="#faq">Perguntas Frequentes - FAQ</a></li>
-                        </ul>
-                    </li>
                 </ul>
             </div>
             <button id="mobile-btn"><i class="fa-solid fa-bars"></i></button>
@@ -56,20 +49,15 @@
                 <li class="nav-item"><a href="#cortinas">Cortinas</a></li>
                 <li class="nav-item"><a href="#persianas">Persianas</a></li>
                 <li class="nav-item"><a href="#decoracoes">Decorações</a></li>
-                <li class="nav-item"><a href="#nossosTrabalhos">Nossos Trabalhos</a></li>
-                <li class="nav-item"><a href="#publicacoes">Publicações</a></li>
-                <li class="nav-item"><a href="#about">Sobre Nós</a></li>
-                <li class="nav-item"><a href="#contact">Contato</a></li>
-                <li class="nav-item"><a href="#faq">Perguntas Frequentes - FAQ</a></li>
             </ul>
         </div>
     </header>
     
 
     <main class="container mt-5">
-        <h1 class="mb-4 text-center">Publicações</h1>
+        <h1 class="mb-4 text-center">Produtos</h1>
         <div class="row">
-            {{#each publicacoes}}
+            {{#each produtos}}
             <div class="col-12 mb-4">
                 <div class="card h-100 shadow-sm">
                     <div class="row g-0">
@@ -77,11 +65,11 @@
                             <div id="carousel-{{@index}}" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img src="http://localhost:3000/img/publicacoes/{{imagem_principal}}" class="d-block w-100 img-thumbnail" alt="{{titulo}}">
+                                        <img src="http://localhost:3000/img/produtos/{{imagem_principal}}" class="d-block w-100 img-thumbnail" alt="{{titulo}}">
                                     </div>
                                     {{#each imagens_internas}}
                                     <div class="carousel-item">
-                                        <img src="http://localhost:3000/img/publicacoes/{{this}}" class="d-block w-100 img-thumbnail" alt="Imagem interna">
+                                        <img src="http://localhost:3000/img/produtos/{{this}}" class="d-block w-100 img-thumbnail" alt="Imagem interna">
                                     </div>
                                     {{/each}}
                                 </div>
@@ -98,7 +86,7 @@
                         <div class="col-md-7 d-flex flex-column">
                             <div class="card-body">
                                 <h5 class="card-title">{{titulo}}</h5>
-                                <p class="card-text">{{conteudo}}</p>
+                                <p class="card-text">{{descricao}}</p> <!-- Added description field -->
                             </div>
                         </div>
                     </div>
