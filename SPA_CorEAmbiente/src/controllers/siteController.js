@@ -60,7 +60,7 @@ exports.getAllDatas = async (req, res) => {
 exports.getPublicacoesPage = async (req, res) => {
   try {
     console.log('Acessando a página de publicações...');
-    console.log('Caminho do arquivo site_publicacao.handlebars:', path.join(__dirname, '../views/site/site_publicacao.handlebars'));
+    console.log('Caminho do arquivo site_publicacoes.handlebars:', path.join(__dirname, '../views/site/site_publicacoes.handlebars'));
 
     // Faz uma solicitação GET para a API que fornece as publicacoes
     const response = await api.get(`/publicacoes`);
@@ -69,26 +69,7 @@ exports.getPublicacoesPage = async (req, res) => {
     const publicacoes = response.data;
 
     // Renderiza a página site/site_publicacao.handlebars e passa as publicacoes como contexto
-    res.render('site/site_publicacao', { publicacoes, layout: false });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Erro ao buscar publicacoes' });
-  }
-};
-
-exports.getPublicacoesPage = async (req, res) => {
-  try {
-    console.log('Acessando a página de publicações...');
-    console.log('Caminho do arquivo site_publicacao.handlebars:', path.join(__dirname, '../views/site/site_publicacao.handlebars'));
-
-    // Faz uma solicitação GET para a API que fornece as publicacoes
-    const response = await api.get(`/publicacoes`);
-
-    // Obtenha os dados JSON da resposta
-    const publicacoes = response.data;
-
-    // Renderiza a página site/site_publicacao.handlebars e passa as publicacoes como contexto
-    res.render('site/site_publicacao', { publicacoes, layout: false });
+    res.render('site/site_publicacoes', { publicacoes, layout: false });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Erro ao buscar publicacoes' });

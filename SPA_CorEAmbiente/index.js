@@ -8,7 +8,6 @@ const path = require('path');
 
 const bannerRoutes = require('./src/routes/bannerRoutes');
 const faqRoutes = require('./src/routes/faqRoutes');
-const perguntasRoutes = require('./src/routes/perguntasRoutes');
 const usuarioRoutes = require('./src/routes/usuarioRoutes');
 const produtoRoutes = require('./src/routes/produtoRoutes');
 const publicacaoRoutes = require('./src/routes/publicacaoRoutes');
@@ -16,7 +15,7 @@ const trabalhoRoutes = require('./src/routes/trabalhoRoutes');
 const depoimentoRoutes = require('./src/routes/depoimentoRoutes');
 const loginRoutes = require('./src/routes/loginRoutes');
 const siteRoutes = require('./src/routes/siteRoutes');
-const sitePubliRoutes = require('./src/routes/site_publicacaoRoutes')
+/* const sitePubliRoutes = require('./src/routes/site_publicacoesRoutes') */
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -143,13 +142,13 @@ app.use('/', produtoRoutes);
 app.use('/', publicacaoRoutes);
 app.use('/', trabalhoRoutes);
 app.use('/', depoimentoRoutes);
-app.use('/', sitePubliRoutes);
+/* app.use('/', sitePubliRoutes); */
 //app.use('/', perguntasRoutes);
 app.use('/', faqRoutes);
 app.use('/', usuarioRoutes); 
 app.use('/', loginRoutes); 
 app.use('/', siteRoutes);
-app.use('/', sitePubliRoutes)
+
 
 // Inicializa o servidor na porta 5000
 const PORT = process.env.PORT || 5000;

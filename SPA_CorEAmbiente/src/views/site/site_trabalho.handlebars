@@ -30,8 +30,8 @@
             </div>
             <div id="nav-pages">
                 <ul id="nav-list">
-                    <li class="nav-item active">
-                        <a href="#home">Início</a>
+                    <li class="nav-item ">
+                        <a href="/">Início</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="#">Produtos</a>
@@ -47,11 +47,11 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="#nossosTrabalhos">Nossos Trabalhos</a>
+                    <li class="nav-item active">
+                        <a href="/lista-trabalhos">Nossos Trabalhos</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="/site_publicacoes/">Publicações</a>
+                    <li class="nav-item ">
+                        <a href="/lista-publicacoes">Publicações</a>
                     </li>
                     <li class="nav-item">
                         <a href="#contact">Contato</a>
@@ -69,6 +69,10 @@
                     </li>
                 </ul>
             </div>
+            <button id="mobile-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </nav>
             <button id="mobile-btn">
                 <i class="fa-solid fa-bars"></i>
             </button>
@@ -107,9 +111,8 @@
     </header>
 
     <main class="container">
-        <h1>Publicações testando</h1>
         <div class="col-md-8 mx-auto" id="trabalhos">
-            <h4>Publicações</h4>
+            <h4>Trabalhos</h4>
             {{#each trabalhos}}
             <hr>
             <div class="card mb-3">
