@@ -1,5 +1,3 @@
-// noticiaController.js
-
 const api = require('../config/api');
 
 // Método para buscar todas as publicacoes
@@ -12,7 +10,7 @@ exports.getAllPublicacoes = async (req, res) => {
     const publicacoes = response.data;
 
     // Renderiza a página publicacao/index.handlebars e passa as publicacoes como contexto
-    res.render('publicacao/', { publicacoes });
+    res.render('publicacao/index', { publicacoes });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Erro ao buscar publicacoes' });
@@ -48,21 +46,20 @@ exports.createPublicacao = async (req, res) => {
   }
 };
 
-
-// Método para buscar todas as publicacoes
+// Método para buscar publicacoes por título
 exports.searchPublicacoesByTitle = async (req, res) => {
   try {
     // Obter o valor inserido no campo de pesquisa
-    const valorPesquisa = req.body.valorPesquisa
+    const { valorPesquisa } = req.body;
 
-    // Fazer uma solicitação GET para buscar banners com base no título
-    const response = await api.get(`/publicacoes/search?titulo=${valorPesquisa}`)
+    // Fazer uma solicitação GET para buscar publicacoes com base no título
+    const response = await api.get(`/publicacoes/search?titulo=${valorPesquisa}`);
 
     // Obtenha os dados JSON da resposta
     const publicacoes = response.data;
 
     // Renderiza a página publicacao/index.handlebars e passa as publicacoes como contexto
-    res.render('publicacao/', { publicacoes });
+    res.render('publicacao/index', { publicacoes });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Erro ao buscar publicacoes' });
