@@ -70,7 +70,6 @@ function validateForm(formData) {
     return true;
 }
 
-// Evento quando o botão "Salvar" do formulário de edição é clicado
 function UpdateFaqClick(event) {
     event.preventDefault();
 
@@ -94,7 +93,13 @@ function UpdateFaqClick(event) {
             },
         };
 
-        axios.put(`${url}api/faqs/${faqId}`, formData, config)
+        // Convert FormData to a plain object
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+
+        axios.put(`${url}api/faqs/${faqId}`, data, config)
             .then(response => {
                 console.log(response.data);
 
