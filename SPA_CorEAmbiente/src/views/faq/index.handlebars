@@ -3,10 +3,10 @@
 {{!-- Seção de conteúdo da página --}}
 <div class="container mt-4">
     <h1 class="mb-4">Cadastro de Faqs</h1>
+    
     <div class="row mb-3">
-        <div class="col-md-10 mb-3">
-            <form action="../faqsSearch/" method="get" class="d-flex" id="searchForm">
-                <!-- Define a ação e o método POST e utiliza display flex para alinhar o botão e a input -->
+        <div class="col-12 col-md-10 mb-3">
+            <form action="../faqsSearch/" method="get" class="d-flex flex-column flex-md-row" id="searchForm">
                 <div class="input-group">
                     <input type="text" class="form-control" name="valorPesquisa" id="valorPesquisa"
                         placeholder="Pesquisar...">
@@ -15,34 +15,33 @@
                     </div>
                 </div>
             </form>
-
         </div>
-        <div class="col-md-2 d-flex justify-content-end mb-3">
+        <div class="col-12 col-md-2 d-flex justify-content-end mb-3">
             <!-- Botão Novo -->
-            <a href="../faqsCreate/" class="btn btn-success"><i class="bi bi-plus-circle"></i> Novo</a>
+            <a href="../faqsCreate/" class="btn btn-success w-100"><i class="bi bi-plus-circle"></i> Novo</a>
         </div>
     </div>
 
     <div class="row" id="card-list">
         {{#each faqs}}
-        <div class="col-md-3 mb-4" id="card{{id}}">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" id="card{{id}}">
+            <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
                     <h5 class="card-title">{{titulo}}</h5>
-                    <div class="d-flex mt-auto justify-content-between">
-                    <h5 class="card-title">{{resposta}}</h5>
-                    <div class="d-flex mt-auto justify-content-between">
-                        <!-- Link de Edição -->
-                        <a class="btn btn-secondary" href="../faqs/{{id}}"><i class="bi bi-pencil"></i> Editar</a>
+                    <p class="card-text">{{resposta}}</p>
+                </div>
+                <div class="card-footer bg-transparent border-top-0 mt-auto d-flex justify-content-between">
+                    <!-- Link de Edição -->
+                    <a class="btn btn-secondary" href="../faqs/{{id}}"><i class="bi bi-pencil"></i> Editar</a>
 
-                        <!-- Link de Exclusão - Botão para acionar o modal -->
-                        <button class="btn btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#confirmDeleteModal{{id}}"><i class="bi bi-trash3"></i> Excluir</button>
-
-                    </div>
+                    <!-- Link de Exclusão - Botão para acionar o modal -->
+                    <button class="btn btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#confirmDeleteModal{{id}}"><i class="bi bi-trash3"></i> Excluir</button>
                 </div>
             </div>
         </div>
-        <!-- Modal de Confirmação trabalho de Exclusão -->
 
+        <!-- Modal de Confirmação de Exclusão -->
         <div class="modal fade" id="confirmDeleteModal{{id}}" tabindex="-1"
             aria-labelledby="confirmDeleteModalLabel{{id}}" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -63,10 +62,9 @@
                 </div>
             </div>
         </div>
-        
+        {{/each}}
     </div>
-    {{/each}}
-
 </div>
+
 <!-- Scripts do formulário publicacao -->
 <script src="../js/faqScripts.js"></script>
