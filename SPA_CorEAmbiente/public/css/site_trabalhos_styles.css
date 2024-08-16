@@ -658,3 +658,20 @@ footer p{
     display: block; /* Garante que a imagem seja tratada como um bloco */
     padding: 10px; /* Adiciona um pequeno padding de 10px em todos os lados */
 }
+
+
+ /* Flexbox to make sure footer stays at the bottom */
+ body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#home, main {
+    flex: 1;
+}
+
+#rodape {
+    margin-top: auto;
+}
